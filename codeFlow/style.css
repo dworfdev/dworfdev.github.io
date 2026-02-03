@@ -1,0 +1,75 @@
+body {
+    background-color: #0d0d0d;
+    color: #e0e0e0;
+    font-family: 'Roboto Mono', monospace;
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.card {
+    background-color: #1e1e1e;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+h1, h2 {
+    color: #a07dff;
+    border-bottom: 2px solid #a07dff40;
+    padding-bottom: 10px;
+}
+
+a.download-button {
+    background: linear-gradient(45deg, #a07dff, #7b68ee);
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 15px;
+    box-shadow: 0 4px 10px rgba(160, 125, 255, 0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+a.download-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(160, 125, 255, 0.4);
+}
+
+.checksum {
+    font-size: 0.8em;
+    color: #e0e0e0;
+    margin-top: 10px;
+}
+
+.screenshots {
+}
+
+.screenshot-gallery {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding-top: 10px;
+}
+
+.screenshot-gallery img {
+    width: 250px;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid #444;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.more-info {
+}
+
