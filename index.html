@@ -17,7 +17,6 @@
 
         .hero-font { font-family: 'Unbounded', sans-serif; }
 
-        /* Эффект сканирующих линий */
         .scanline {
             background: linear-gradient(to bottom, rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
                         linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
@@ -36,9 +35,21 @@
         }
 
         .green-text { color: #00ff00; }
-        
-        /* Плавность для всех переходов */
         .transition-all { transition: all 0.5s ease; }
+        
+        /* Дополнительный CSS для визуального подергивания */
+        @keyframes shift {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+        .glitch-active {
+            animation: shift 0.1s infinite;
+            text-shadow: 2px 0 red, -2px 0 blue;
+        }
     </style>
 </head>
 <body class="pb-20">
@@ -46,22 +57,15 @@
     <div id="disclaimer" class="fixed inset-0 z-[100] bg-black flex items-center justify-center p-6 backdrop-blur-md">
         <div class="max-w-2xl w-full border-2 border-red-600 p-8 bg-zinc-900 shadow-[0_0_50px_rgba(220,38,38,0.5)] relative">
             <div class="absolute top-0 left-0 p-2 text-red-600 text-xs">DISCLAIMER</div>
-            
             <h2 class="hero-font text-2xl md:text-3xl text-red-600 mb-6 uppercase tracking-tighter">УВАГА!!!</h2>
-            
             <div class="space-y-4 text-sm md:text-base leading-relaxed font-bold border-l-2 border-red-600 pl-4">
                 <p>1. Весь контент є <span class="text-red-500 underline">художньою сатирою</span>. Якщо ви не розрізняєте іронію та реальність — закрийте вкладку.</p>
                 <p>2. Автор не несе відповідальності за неправильне сприйняття контенту. Усі збіги з реальністью та ТЦК — суто ваша уява.</p>
                 <p>3. Входячи сюди, ви підтверджуєте, що у вас є мізки та почуття гумору.</p>
             </div>
-
             <div class="mt-10 flex flex-col md:flex-row gap-4">
-                <button onclick="acceptDisclaimer()" class="bg-[#00ff00] text-black font-black px-6 py-3 uppercase hover:bg-white transition-all">
-                    Я ПОГОДЖУЮСЬ
-                </button>
-                <a href="https://google.com" class="border border-zinc-700 text-zinc-500 px-6 py-3 uppercase text-center hover:text-white transition-all text-xs flex items-center justify-center">
-                    НІ
-                </a>
+                <button onclick="acceptDisclaimer()" class="bg-[#00ff00] text-black font-black px-6 py-3 uppercase hover:bg-white transition-all">Я ПОГОДЖУЮСЬ</button>
+                <a href="https://google.com" class="border border-zinc-700 text-zinc-500 px-6 py-3 uppercase text-center hover:text-white transition-all text-xs flex items-center justify-center">НІ</a>
             </div>
         </div>
     </div>
@@ -72,7 +76,7 @@
         </div>
 
         <div class="text-center mt-8">
-            <h1 class="hero-font text-6xl md:text-8xl tracking-tighter uppercase leading-none">
+            <h1 id="glitch-title" class="hero-font text-6xl md:text-8xl tracking-tighter uppercase leading-none min-h-[1em]">
                 ДВОРФ.ДЕВ
             </h1>
             <p class="mt-4 text-[10px] md:text-xs tracking-[0.4em] uppercase text-zinc-500 font-bold">
@@ -92,14 +96,12 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-16">
-            
             <a href="https://dworfdev.github.io/codeFlow/" target="_blank" class="group block">
                 <div class="aspect-video neon-border relative flex items-center justify-center overflow-hidden bg-zinc-900">
                     <img src="code-flow-banner.png" alt="Project" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-100 transition-all duration-500">
                     <div class="scanline absolute inset-0 z-10 group-hover:opacity-0 transition-all duration-500"></div>
                     <span class="text-4xl green-text font-black z-20 relative group-hover:opacity-0 transition-all duration-500">>_</span>
                 </div>
-
                 <div class="mt-4">
                     <p class="text-[10px] green-text font-bold mb-1">APP / UNITY C#</p>
                     <h3 class="hero-font text-lg leading-tight uppercase group-hover:text-[#00ff00] transition-colors">Навчіть тебе основам шарпу</h3>
@@ -116,7 +118,6 @@
                     <h3 class="hero-font text-lg leading-tight uppercase group-hover:text-[#00ff00] transition-colors">Всрата гра для Brakeys Game Jam 2026.1</h3>
                 </div>
             </a>
-
         </div>
     </main>
 
@@ -125,13 +126,12 @@
     </footer>
 
     <script>
+        // ЛОГИКА ДИСКЛЕЙМЕРА
         function acceptDisclaimer() {
             const overlay = document.getElementById('disclaimer');
             overlay.style.transition = 'opacity 0.5s ease';
             overlay.style.opacity = '0';
-            setTimeout(() => {
-                overlay.style.display = 'none';
-            }, 500);
+            setTimeout(() => { overlay.style.display = 'none'; }, 500);
             localStorage.setItem('dworf_disclaimer_accepted', 'true');
         }
 
@@ -139,8 +139,38 @@
             if (localStorage.getItem('dworf_disclaimer_accepted') === 'true') {
                 document.getElementById('disclaimer').style.display = 'none';
             }
+            startGlitch(); // Запуск глитча после загрузки
+        }
+
+        // ЛОГИКА ГЛИТЧА ТЕКСТА
+        const targetText = "ДВОРФ.ДЕВ";
+        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890@#$%^&*()_+<>?";
+        const titleEl = document.getElementById('glitch-title');
+
+        function scrambleText() {
+            let iteration = 0;
+            titleEl.classList.add('glitch-active'); // Добавляем тряску
+            
+            const interval = setInterval(() => {
+                titleEl.innerText = targetText.split("").map((char, index) => {
+                    if(index < iteration) return targetText[index];
+                    return chars[Math.floor(Math.random() * chars.length)];
+                }).join("");
+                
+                if(iteration >= targetText.length) {
+                    clearInterval(interval);
+                    titleEl.classList.remove('glitch-active');
+                }
+                iteration += 1 / 3;
+            }, 30;
+        }
+
+        function startGlitch() {
+            // Запускаем глитч каждые 5-8 секунд
+            setInterval(() => {
+                scrambleText();
+            }, 5000 + Math.random() * 3000);
         }
     </script>
-
 </body>
 </html>
