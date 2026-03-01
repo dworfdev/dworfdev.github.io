@@ -115,6 +115,43 @@
     padding: 10px;
     border: 1px solid #000;
 }
+
+        /* Стилі для вікон, що вилітають */
+.critical-popup {
+    position: fixed;
+    width: 260px;
+    background: #ff0000;
+    border: 4px solid #000;
+    color: #000;
+    font-family: 'Unbounded', sans-serif;
+    z-index: 100001; /* Поверх оверлею */
+    box-shadow: 10px 10px 0px #000;
+    animation: popup-glitch 0.1s infinite;
+    pointer-events: none; /* Щоб не заважали мишці, якщо захочеш клікати */
+}
+
+.popup-header {
+    background: #000;
+    color: #ff0000;
+    font-size: 10px;
+    padding: 2px 5px;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+}
+
+.popup-body {
+    padding: 15px;
+    text-align: center;
+    font-weight: 900;
+    font-size: 18px;
+    line-height: 1;
+}
+
+@keyframes popup-glitch {
+    0% { transform: translate(0,0) rotate(var(--rotation)); }
+    50% { filter: invert(0.2); }
+    100% { transform: translate(1px, -1px) rotate(var(--rotation)); }
+}
     </style>
 </head>
 <body class="pb-20">
@@ -303,23 +340,22 @@
     function triggerTroll() {
     const body = document.body;
     
-    // 1. Початок хаосу: інверсія і тряска
+    // 1. Початок хаосу
     body.classList.add('shake');
     
-    // 2. Знищуємо контент сайту, міняємо текст
+    // 2. Знищуємо контент
     const allText = document.querySelectorAll('h1, h2, p, span, h3');
     allText.forEach(el => {
         el.innerText = "ERROR_SYSTEM_MELTDOWN";
         el.style.color = "#ff0000";
     });
 
-    // 3. Через 800мс вилітає "Чорний екран смерті"
+    // 3. Через 800мс вилітає основне м'ясо
     setTimeout(() => {
         const overlay = document.createElement('div');
         overlay.id = 'horror-overlay';
         overlay.style.display = 'flex';
         
-        // Генеруємо "стрьомні" дані
         const fakeMAC = "00-1A-2B-3C-4D-5E";
         
         overlay.innerHTML = `
@@ -327,30 +363,45 @@
                 А ХУЙ ТОБІ :)<br>
                 ZACHIFKIRYV LOHA<br>
                 ZACHIFKIRYV LOHA<br>
-                ERROR_DATA_VOID<br>
-                А ХУЙ ТОБІ :)<br>
-                ZACHIFKIRYV LOHA<br>
-                ZACHIFKIRYV LOHA<br>
-                А ХУЙ ТОБІ :)<br>
-                ZACHIFKIRYV LOHA<br>
-                SYSTEM_FAILURE<br>
                 А ХУЙ ТОБІ :)<br>
                 ZACHIFKIRYV LOHA
             </div>
             
             <div class="system-logs-horror text-center">
-               <br>
                 UPLINK: 127.0.0.1 (LOCAL_TRAP)<br>
                 MAC_ADDR: ${fakeMAC}<br>
                 STATUS: DE-ANON_COMPLETE<br>
-                <span class="animate-pulse text-black">UPLOAD_DATA_TO_TCC_SERVER: 84%...</span>
+                <span class="animate-pulse text-black font-bold">UPLOAD_DATA_TO_TCC_SERVER: 84%...</span>
             </div>
 
-            <div class="absolute bottom-10 text- text-black tracking-">
+            <div class="absolute bottom-10 text-black font-black uppercase tracking-widest">
                 THERE IS NO ESCAPE. F5 IS YOUR ONLY GOD NOW.
             </div>
         `;
         document.body.appendChild(overlay);
+        document.body.style.overflow = 'hidden';
+
+        // 4. ЗАПУСК ПЕКЛА З ВІКНАМИ (Popup Hell)
+        setInterval(() => {
+            const win = document.createElement('div');
+            
+            // Випадкова позиція
+            const x = Math.random() * (window.innerWidth - 250);
+            const y = Math.random() * (window.innerHeight - 150);
+            const rotation = Math.random() * 20 - 10;
+
+            win.className = 'critical-popup'; // Клас для CSS
+            win.style.left = `${x}px`;
+            win.style.top = `${y}px`;
+            win.style.transform = `rotate(${rotation}deg)`;
+            
+            win.innerHTML = `
+                <div class="popup-header">CRITICAL_ERROR.exe</div>
+                <div class="popup-body">А ХУЙ ТОБІ :)</div>
+            `;
+
+            document.body.appendChild(win);
+        }, 200); // Нове вікно кожні 0.2 секунди
         
     }, 800);
 }
