@@ -66,30 +66,40 @@
             animation: earthquake 0.3s linear;
         }
 
-        .meltdown {
-            filter: invert(1) sepia(1) saturate(20) hue-rotate(320deg) !important;
-            transition: none !important;
+        /* Ядерний режим */
+        .meltdown-active {
+            filter: invert(1) contrast(5) hue-rotate(300deg) brightness(0.5) !important;
+            background-color: #ff0000 !important;
+            overflow: hidden !important;
         }
 
-        #troll-overlay {
+        #horror-overlay {
             display: none;
             position: fixed;
             inset: 0;
-            background: #ff0000;
-            color: #000;
-            z-index: 10000;
-            font-family: 'Unbounded', sans-serif;
-            padding: 20px;
-            text-align: center;
-            justify-content: center;
-            align-items: center;
+            background: #000;
+            z-index: 99999;
             flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Unbounded', sans-serif;
+            color: #ff0000;
+            text-shadow: 0 0 20px #ff0000;
         }
 
-        .glitch-overlay-text {
-            animation: shift 0.05s infinite;
-            font-size: 5rem;
-            line-height: 0.8;
+        .glitch-text-huge {
+            font-size: 8vw;
+            line-height: 0.9;
+            animation: shift 0.02s infinite;
+            letter-spacing: -5px;
+        }
+
+        .system-logs {
+            margin-top: 40px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            color: #440000;
+            text-transform: uppercase;
         }
     </style>
 </head>
@@ -279,31 +289,50 @@
     function triggerTroll() {
         const body = document.body;
     
-        // 1. Починаємо жорстку тряску і колірний хаос
-        body.classList.add('shake', 'meltdown');
+        // 1. Початок хаосу: інверсія і тряска
+        body.classList.add('meltdown-active', 'shake');
     
-        // 2. Рандомно міняємо текст по всьому сайту на "ХУЙ ТОБІ"
-        const allTexts = document.querySelectorAll('h1, h2, h3, p, span, button');
-        allTexts.forEach(el => {
-            if (Math.random() > 0.5) el.innerText = "А ХУЙ ТОБІ :)";
+        // 2. Знищуємо контент сайту
+        const allText = document.querySelectorAll('h1, h2, p, span, h3');
+        allText.forEach(el => {
+            el.innerText = "ERROR_VOID_EXPIRED";
+            el.style.color = "#000";
         });
 
-        // 3. Через 600мс вибиваємо фінальний екран
+        // 3. Через 800мс вилітає "Чорний екран смерті"
         setTimeout(() => {
             const overlay = document.createElement('div');
-            overlay.id = 'troll-overlay';
+            overlay.id = 'horror-overlay';
             overlay.style.display = 'flex';
+        
+            // Генеруємо "стрьомні" дані
+            const fakeMAC = "00-1A-2B-3C-4D-5E";
+        
             overlay.innerHTML = `
-                <div class="glitch-overlay-text font-black uppercase">
-                    А ХУЙ ТОБІ :) <br> А ХУЙ ТОБІ :) <br> А ХУЙ ТОБІ :)
+                <div class="glitch-text-huge font-black">
+                    зачіфкирив лоха із хаймарса<br>зачіфкирив лоха із хаймарса<br>зачіфкирив лоха із хаймарса
                 </div>
-                <p class="mt-10 hero-font text-xl">IP: 127.0.0.1 (ЛОХ ВИКУПЛЕНИЙ)</p>
-                <button onclick="location.reload()" class="mt-20 border-4 border-black px-10 py-5 font-black text-2xl hover:bg-black hover:text-red-600 transition-all">
-                    ПЕРЕЗАВАНТАЖИТИ СИСТЕМУ
-                </button>
+            
+                <div class="system-logs text-center">
+                    [SYSTEM_FAILURE_DETECTED]<br>
+                    UPLINK: 127.0.0.1 (LOCAL_TRAP)<br>
+                    MAC_ADDR: ${fakeMAC}<br>
+                    STATUS: DE-ANON_COMPLETE<br>
+                    <span class="animate-pulse text-white">UPLOAD_DATA_TO_TCC_SERVER: 84%...</span>
+                </div>
+
+                <div class="absolute bottom-10 text-[8px] text-zinc-900 tracking-[1em]">
+                    NO ESCAPE? :(
+                </div>
             `;
             document.body.appendChild(overlay);
-        }, 600);
+        
+            // Фінальний штрих: міняємо колір фону оверлея рандомно чорний/червоний
+            setInterval(() => {
+                overlay.style.backgroundColor = (overlay.style.backgroundColor === 'rgb(0, 0, 0)') ? '#110000' : '#000';
+            }, 50);
+        
+        }, 800);
     }
 </script>
 </body>
