@@ -37,7 +37,6 @@
         .green-text { color: #00ff00; }
         .transition-all { transition: all 0.5s ease; }
         
-        /* Дополнительный CSS для визуального подергивания */
         @keyframes shift {
             0% { transform: translate(0); }
             20% { transform: translate(-2px, 2px); }
@@ -51,13 +50,11 @@
             text-shadow: 2px 0 red, -2px 0 blue;
         }
 
-        /* Эффект цветового сдвига для взрыва */
         .system-critical {
             filter: invert(1) hue-rotate(180deg) contrast(2);
             transition: filter 0.1s;
         }
 
-        /* Анимация тряски всего экрана */
         @keyframes earthquake {
             0% { transform: translate(0); }
             10% { transform: translate(-10px, 10px); }
@@ -93,12 +90,27 @@
             <img src="volkswagen-bus.png" alt="Banner" class="w-full border border-zinc-800 shadow-2xl">
         </div>
 
-        <div class="text-center mt-8 px-2"> <h1 id="glitch-title" class="hero-font text-[12vw] sm:text-6xl md:text-8xl tracking-tighter uppercase leading-none min-h-[1em] break-words">
+        <div class="text-center mt-8 px-2"> 
+            <h1 id="glitch-title" class="hero-font text-[12vw] sm:text-6xl md:text-8xl tracking-tighter uppercase leading-none min-h-[1em] break-words">
                 ДВОРФ.ДЕВ
             </h1>
             <p class="mt-4 text-[8px] sm:text-[10px] md:text-xs tracking-[0.2em] sm:tracking-[0.4em] uppercase text-zinc-500 font-bold">
                 ПАТРІОТ <span class="green-text">//</span> РОЗРОБНИК Х*ЙНІ <span class="green-text">//</span> БАЙРАКТАР
             </p>
+
+            <div class="max-w-xs mx-auto mt-6 bg-zinc-900/50 border border-zinc-800 p-3 font-mono text-[10px] relative overflow-hidden text-left">
+                <div class="flex justify-between mb-2 border-b border-zinc-800 pb-1">
+                    <span class="green-text font-bold uppercase tracking-tighter">MISSION: MS_JUNIOR</span>
+                    <span class="animate-pulse text-red-500 font-black">ДЕНЬ_01</span>
+                </div>
+                <div class="text-zinc-400 uppercase leading-tight h-8 flex items-center">
+                    <span class="green-text mr-2 font-bold">></span>
+                    <span id="mission-status" class="transition-opacity duration-300">Ініціалізація...</span>
+                </div>
+                <div class="w-full bg-zinc-800 h-[2px] mt-2">
+                    <div class="bg-[#00ff00] h-full shadow-[0_0_5px_#00ff00]" style="width: 5%;"></div>
+                </div>
+            </div>
         </div>
 
         <button id="swag-button" onclick="triggerSwag()" class="mt-10 bg-[#00ff00] text-black font-black px-8 py-3 text-xl uppercase tracking-tighter hover:bg-white transition-colors relative overflow-hidden">
@@ -143,34 +155,51 @@
     </footer>
 
     <script>
-    // Функция закрытия
     function acceptDisclaimer() {
         const overlay = document.getElementById('disclaimer');
         overlay.style.transition = 'opacity 0.5s ease, visibility 0.5s';
         overlay.style.opacity = '0';
-        overlay.style.visibility = 'hidden'; // Добавляем скрытие видимости
-        
-        setTimeout(() => {
-            overlay.style.display = 'none';
-        }, 500);
-        
+        overlay.style.visibility = 'hidden';
+        setTimeout(() => { overlay.style.display = 'none'; }, 500);
         localStorage.setItem('dworf_disclaimer_accepted', 'true');
     }
 
-    // Проверка при загрузке
+    // ЛОГИКА МИССИИ MICROSOFT
+    const statuses = [
+        "Шукаю бекдори в Редмонді...",
+        "Скинув CV Сатьї Наделлі в лічку...",
+        "Обходжу фільтри HR-ів через впн...",
+        "Вчуся центрувати div, шоб не втикати...",
+        "Чекаю на оффер або на бан в LinkedIn...",
+        "П'ю п'яту каву...",
+        "Міняю статус на 'Visionary Vagabond'...",
+        "Майкрософт, вставай, джун прийшов...",
+        "Дебажу код і сенс життя одночасно..."
+    ];
+
+    function updateMissionStatus() {
+        const statusEl = document.getElementById('mission-status');
+        if (!statusEl) return;
+        let i = 0;
+        setInterval(() => {
+            statusEl.style.opacity = '0';
+            setTimeout(() => {
+                statusEl.innerText = statuses[i];
+                statusEl.style.opacity = '1';
+                i = (i + 1) % statuses.length;
+            }, 300);
+        }, 4000);
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
         const overlay = document.getElementById('disclaimer');
         if (localStorage.getItem('dworf_disclaimer_accepted') === 'true') {
             overlay.style.display = 'none';
         }
-        
-        // Запуск глитча (из предыдущего шага)
-        if (typeof startGlitch === "function") {
-            startGlitch();
-        }
+        startGlitch();
+        updateMissionStatus();
     });
 
-    // --- ТВОЙ КОД ГЛИТЧА НИЖЕ ---
     const targetText = "ДВОРФ.ДЕВ";
     const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890@#$%^&*()_+<>?";
     const titleEl = document.getElementById('glitch-title');
@@ -179,13 +208,11 @@
         if (!titleEl) return;
         let iteration = 0;
         titleEl.classList.add('glitch-active');
-        
         const interval = setInterval(() => {
             titleEl.innerText = targetText.split("").map((char, index) => {
                 if(index < iteration) return targetText[index];
                 return chars[Math.floor(Math.random() * chars.length)];
             }).join("");
-            
             if(iteration >= targetText.length) {
                 clearInterval(interval);
                 titleEl.classList.remove('glitch-active');
@@ -202,26 +229,17 @@
         const body = document.body;
         const button = document.getElementById('swag-button');
         const projectsSection = document.querySelector('main');
-
-        // 1. Наваливаем эффектов
         body.classList.add('system-critical', 'shake');
         button.innerText = "CRITICAL_ERROR";
         button.style.backgroundColor = "#ff0000";
-
-        // 2. Имитируем "перезагрузку" и скроллим
         setTimeout(() => {
             body.classList.remove('system-critical', 'shake');
-        
-            // Плавный скролл к проектам
             projectsSection.scrollIntoView({ behavior: 'smooth' });
-        
-            // Возвращаем кнопку в норму через секунду
             setTimeout(() => {
                 button.innerText = "SHOW 'EM РІАЛ СВЕГ";
                 button.style.backgroundColor = "#00ff00";
             }, 1000);
-        
-        }, 400); // Длительность вспышки
+        }, 400);
     }
 </script>
 </body>
