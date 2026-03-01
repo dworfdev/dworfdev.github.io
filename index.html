@@ -126,51 +126,60 @@
     </footer>
 
     <script>
-        // ЛОГИКА ДИСКЛЕЙМЕРА
-        function acceptDisclaimer() {
-            const overlay = document.getElementById('disclaimer');
-            overlay.style.transition = 'opacity 0.5s ease';
-            overlay.style.opacity = '0';
-            setTimeout(() => { overlay.style.display = 'none'; }, 500);
-            localStorage.setItem('dworf_disclaimer_accepted', 'true');
+    // Функция закрытия
+    function acceptDisclaimer() {
+        const overlay = document.getElementById('disclaimer');
+        overlay.style.transition = 'opacity 0.5s ease, visibility 0.5s';
+        overlay.style.opacity = '0';
+        overlay.style.visibility = 'hidden'; // Добавляем скрытие видимости
+        
+        setTimeout(() => {
+            overlay.style.display = 'none';
+        }, 500);
+        
+        localStorage.setItem('dworf_disclaimer_accepted', 'true');
+    }
+
+    // Проверка при загрузке
+    document.addEventListener('DOMContentLoaded', function() {
+        const overlay = document.getElementById('disclaimer');
+        if (localStorage.getItem('dworf_disclaimer_accepted') === 'true') {
+            overlay.style.display = 'none';
         }
-
-        window.onload = function() {
-            if (localStorage.getItem('dworf_disclaimer_accepted') === 'true') {
-                document.getElementById('disclaimer').style.display = 'none';
-            }
-            startGlitch(); // Запуск глитча после загрузки
+        
+        // Запуск глитча (из предыдущего шага)
+        if (typeof startGlitch === "function") {
+            startGlitch();
         }
+    });
 
-        // ЛОГИКА ГЛИТЧА ТЕКСТА
-        const targetText = "ДВОРФ.ДЕВ";
-        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890@#$%^&*()_+<>?";
-        const titleEl = document.getElementById('glitch-title');
+    // --- ТВОЙ КОД ГЛИТЧА НИЖЕ ---
+    const targetText = "ДВОРФ.ДЕВ";
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890@#$%^&*()_+<>?";
+    const titleEl = document.getElementById('glitch-title');
 
-        function scrambleText() {
-            let iteration = 0;
-            titleEl.classList.add('glitch-active'); // Добавляем тряску
+    function scrambleText() {
+        if (!titleEl) return;
+        let iteration = 0;
+        titleEl.classList.add('glitch-active');
+        
+        const interval = setInterval(() => {
+            titleEl.innerText = targetText.split("").map((char, index) => {
+                if(index < iteration) return targetText[index];
+                return chars[Math.floor(Math.random() * chars.length)];
+            }).join("");
             
-            const interval = setInterval(() => {
-                titleEl.innerText = targetText.split("").map((char, index) => {
-                    if(index < iteration) return targetText[index];
-                    return chars[Math.floor(Math.random() * chars.length)];
-                }).join("");
-                
-                if(iteration >= targetText.length) {
-                    clearInterval(interval);
-                    titleEl.classList.remove('glitch-active');
-                }
-                iteration += 1 / 3;
-            }, 30;
-        }
+            if(iteration >= targetText.length) {
+                clearInterval(interval);
+                titleEl.classList.remove('glitch-active');
+            }
+            iteration += 1 / 3;
+        }, 30);
+    }
 
-        function startGlitch() {
-            // Запускаем глитч каждые 5-8 секунд
-            setInterval(() => {
-                scrambleText();
-            }, 5000 + Math.random() * 3000);
-        }
-    </script>
+    function startGlitch() {
+        setInterval(scrambleText, 6000);
+    }
+</script>
 </body>
 </html>
