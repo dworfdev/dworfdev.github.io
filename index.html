@@ -65,6 +65,32 @@
         .shake {
             animation: earthquake 0.3s linear;
         }
+
+        .meltdown {
+            filter: invert(1) sepia(1) saturate(20) hue-rotate(320deg) !important;
+            transition: none !important;
+        }
+
+        #troll-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: #ff0000;
+            color: #000;
+            z-index: 10000;
+            font-family: 'Unbounded', sans-serif;
+            padding: 20px;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .glitch-overlay-text {
+            animation: shift 0.05s infinite;
+            font-size: 5rem;
+            line-height: 0.8;
+        }
     </style>
 </head>
 <body class="pb-20">
@@ -251,26 +277,33 @@
     }
 
     function triggerTroll() {
-        // 1. Ефект вибуху
-        triggerSwag();
+        const body = document.body;
     
-        // 2. Міняємо статус у барі на червоний і агресивний
-        const statusText = document.getElementById('mission-status');
-        const progressBar = document.querySelector('.bg-\\[\\#00ff00\\]');
+        // 1. Починаємо жорстку тряску і колірний хаос
+        body.classList.add('shake', 'meltdown');
     
-        if(statusText) {
-            statusText.innerText = "IP: 127.0.0.1 (ЛОХ ВИКУПЛЕНИЙ)";
-            statusText.style.color = "#ff0000";
-        }
-        if(progressBar) {
-            progressBar.style.backgroundColor = "#ff0000";
-            progressBar.style.boxShadow = "0 0 10px #ff0000";
-        }
+        // 2. Рандомно міняємо текст по всьому сайту на "ХУЙ ТОБІ"
+        const allTexts = document.querySelectorAll('h1, h2, h3, p, span, button');
+        allTexts.forEach(el => {
+            if (Math.random() > 0.5) el.innerText = "А ХУЙ ТОБІ :)";
+        });
 
-        // 3. Фінальний панчлайн
+        // 3. Через 600мс вибиваємо фінальний екран
         setTimeout(() => {
-            alert("лох detected ^.^");
-        }, 500);
+            const overlay = document.createElement('div');
+            overlay.id = 'troll-overlay';
+            overlay.style.display = 'flex';
+            overlay.innerHTML = `
+                <div class="glitch-overlay-text font-black uppercase">
+                    А ХУЙ ТОБІ :) <br> А ХУЙ ТОБІ :) <br> А ХУЙ ТОБІ :)
+                </div>
+                <p class="mt-10 hero-font text-xl">IP: 127.0.0.1 (ЛОХ ВИКУПЛЕНИЙ)</p>
+                <button onclick="location.reload()" class="mt-20 border-4 border-black px-10 py-5 font-black text-2xl hover:bg-black hover:text-red-600 transition-all">
+                    ПЕРЕЗАВАНТАЖИТИ СИСТЕМУ
+                </button>
+            `;
+            document.body.appendChild(overlay);
+        }, 600);
     }
 </script>
 </body>
