@@ -50,6 +50,24 @@
             animation: shift 0.1s infinite;
             text-shadow: 2px 0 red, -2px 0 blue;
         }
+
+        /* Эффект цветового сдвига для взрыва */
+        .system-critical {
+            filter: invert(1) hue-rotate(180deg) contrast(2);
+            transition: filter 0.1s;
+        }
+
+        /* Анимация тряски всего экрана */
+        @keyframes earthquake {
+            0% { transform: translate(0); }
+            10% { transform: translate(-10px, 10px); }
+            20% { transform: translate(10px, -10px); }
+            30% { transform: translate(-5px, -5px); }
+            100% { transform: translate(0); }
+        }
+        .shake {
+            animation: earthquake 0.3s linear;
+        }
     </style>
 </head>
 <body class="pb-20">
@@ -84,7 +102,7 @@
             </p>
         </div>
 
-        <button class="mt-10 bg-[#00ff00] text-black font-black px-8 py-3 text-xl uppercase tracking-tighter hover:bg-white transition-colors">
+        <button id="swag-button" onclick="triggerSwag()" class="mt-10 bg-[#00ff00] text-black font-black px-8 py-3 text-xl uppercase tracking-tighter hover:bg-white transition-colors relative overflow-hidden">
             SHOW 'EM РІАЛ СВЕГ
         </button>
     </section>
@@ -179,6 +197,32 @@
 
     function startGlitch() {
         setInterval(scrambleText, 6000);
+    }
+
+    function triggerSwag() {
+        const body = document.body;
+        const button = document.getElementById('swag-button');
+        const projectsSection = document.querySelector('main');
+
+        // 1. Наваливаем эффектов
+        body.classList.add('system-critical', 'shake');
+        button.innerText = "CRITICAL_ERROR";
+        button.style.backgroundColor = "#ff0000";
+
+        // 2. Имитируем "перезагрузку" и скроллим
+        setTimeout(() => {
+            body.classList.remove('system-critical', 'shake');
+        
+            // Плавный скролл к проектам
+            projectsSection.scrollIntoView({ behavior: 'smooth' });
+        
+            // Возвращаем кнопку в норму через секунду
+            setTimeout(() => {
+                button.innerText = "SHOW 'EM РІАЛ СВЕГ";
+                button.style.backgroundColor = "#00ff00";
+            }, 1000);
+        
+        }, 400); // Длительность вспышки
     }
 </script>
 </body>
