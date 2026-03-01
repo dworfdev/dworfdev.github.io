@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XXPortfoli0</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@900&family=JetBrains+Mono:wght@400;700&display=swap');
+
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'JetBrains Mono', monospace;
+            cursor: crosshair;
+            overflow-x: hidden;
+        }
+
+        .hero-font { font-family: 'Unbounded', sans-serif; }
+
+        .acid-shadow {
+            text-shadow: 3px 3px 0px #32CD32, -3px -3px 0px #ff00ff;
+        }
+        
+        .btn-glitch {
+            background: #32CD32;
+            color: #000;
+            transition: 0.2s;
+            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+            display: inline-block;
+        }
+
+        .btn-glitch:hover {
+            background: #ff00ff;
+            transform: scale(1.1);
+            box-shadow: 0 0 20px #ff00ff;
+        }
+
+        .work-card {
+            border: 1px solid #1a1a1a;
+            transition: all 0.3s ease;
+        }
+
+        .work-card:hover {
+            border-color: #32CD32;
+            background: #050505;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="min-h-screen flex flex-col items-center justify-center p-4">
+        <div class="max-w-4xl w-full">
+            <div class="relative group">
+                <img src="volkswagen-bus.jpg" alt="Portfolio Banner" 
+                     class="w-full border-2 border-white/20 group-hover:border-green-500 transition-colors duration-500">
+                
+                <div class="absolute inset-0 bg-green-500/10 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity"></div>
+            </div>
+            
+            <div class="mt-10 text-center">
+                <h1 class="hero-font text-6xl md:text-9xl uppercase acid-shadow">дворф.дев</h1>
+                <p class="mt-4 text-sm md:text-base tracking-[0.3em] uppercase text-zinc-500">
+                    Патріот // Розробник х*йні // Байрактар
+                </p>
+            </div>
+        </div>
+
+        <a href="#portfolio" class="mt-16 btn-glitch font-black px-10 py-3 text-xl uppercase italic">
+            show 'em ріал свег
+        </a>
+    </section>
+
+    <section id="portfolio" class="py-24 px-6 max-w-6xl mx-auto">
+        <div class="flex items-center gap-4 mb-16">
+            <div class="h-[2px] w-12 bg-green-500"></div>
+            <h2 class="hero-font text-3xl uppercase">проєктікі</h2>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="work-card p-4">
+                <div class="aspect-video bg-zinc-900 mb-4 border border-zinc-800 flex items-center justify-center text-zinc-700">
+                    CodeFlow(Unity C#)
+                </div>
+                <h3 class="font-bold text-lg text-green-500 tracking-tighter uppercase">APP / Unity C#</h3>
+                <p class="text-zinc-400 text-sm">Навчить тебе основам шарпу</p>
+            </div>
+
+            <div class="work-card p-4">
+                <div class="aspect-video bg-zinc-900 mb-4 border border-zinc-800 flex items-center justify-center text-zinc-700">
+                    Inside the Box
+                </div>
+                <h3 class="font-bold text-lg text-green-500 tracking-tighter uppercase">GAME / 3D</h3>
+                <p class="text-zinc-400 text-sm">Фанова гра під тему "STRANGE PLACES"</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 border-t border-zinc-900 flex flex-col items-center gap-4">
+        <div class="flex gap-6 text-zinc-500 text-sm">
+            <a href="#" class="hover:text-green-500">TELEGRAM</a>
+            <a href="#" class="hover:text-white">ITCH.IO</a>
+        </div>
+        <p class="text-[10px] text-zinc-800 tracking-widest uppercase">system_failure. v1.0</p>
+    </footer>
+
+</body>
+</html>
