@@ -17,7 +17,7 @@
 
         .hero-font { font-family: 'Unbounded', sans-serif; }
 
-        /* Эффект сканирующих линий (как на старых мониках) */
+        /* Эффект сканирующих линий */
         .scanline {
             background: linear-gradient(to bottom, rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
                         linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
@@ -25,7 +25,6 @@
             pointer-events: none;
         }
 
-        /* Неоновая рамка */
         .neon-border {
             border: 2px solid #00ff00;
             box-shadow: 0 0 15px rgba(0, 255, 0, 0.4);
@@ -36,13 +35,10 @@
             border: 1px solid #1a1a1a;
         }
 
-        /* Анимация мигающего курсора */
-        .cursor-blink {
-            animation: blink 1s infinite;
-        }
-        @keyframes blink { 50% { opacity: 0; } }
-
         .green-text { color: #00ff00; }
+        
+        /* Плавность для всех переходов */
+        .transition-all { transition: all 0.5s ease; }
     </style>
 </head>
 <body class="pb-20">
@@ -74,28 +70,31 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-16">
             
-            <div class="group">
+            <a href="https://dworfdev.github.io/codeFlow/" target="_blank" class="group block">
                 <div class="aspect-video neon-border relative flex items-center justify-center overflow-hidden bg-zinc-900">
-                    <img src="code-flow-banner.png" alt="Project" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-100 transition-opacity duration-500">
-                    <div class="scanline absolute inset-0 z-10"></div>
-                    <span class="text-4xl green-text font-black group-hover:scale-125 transition-transform z-20 relative">>_</span>
+                    <img src="code-flow-banner.png" alt="Project" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-100 transition-all duration-500">
+                    
+                    <div class="scanline absolute inset-0 z-10 group-hover:opacity-0 transition-all duration-500"></div>
+                    
+                    <span class="text-4xl green-text font-black z-20 relative group-hover:opacity-0 transition-all duration-500">>_</span>
                 </div>
 
                 <div class="mt-4">
                     <p class="text-[10px] green-text font-bold mb-1">APP / UNITY C#</p>
-                    <h3 class="hero-font text-lg leading-tight uppercase">Навчіть тебе основам шарпу</h3>
+                    <h3 class="hero-font text-lg leading-tight uppercase group-hover:text-[#00ff00] transition-colors">Навчіть тебе основам шарпу</h3>
                 </div>
-            </div>
+            </a>
 
-            <div class="group">
-                <div class="aspect-video card-gray relative flex items-center justify-center">
-                    <span class="text-4xl text-zinc-800 font-black group-hover:text-zinc-500">>_</span>
+            <a href="https://chr0makid.itch.io/inside-the-box" target="_blank" class="group block">
+                <div class="aspect-video card-gray group-hover:neon-border relative flex items-center justify-center overflow-hidden transition-all duration-500">
+                    <div class="scanline absolute inset-0 z-10 group-hover:opacity-0 transition-all duration-500"></div>
+                    <span class="text-4xl text-zinc-800 group-hover:opacity-0 font-black transition-all duration-500">>_</span>
                 </div>
                 <div class="mt-4">
                     <p class="text-[10px] green-text font-bold mb-1">GAME / 3D</p>
-                    <h3 class="hero-font text-lg leading-tight uppercase">Всрата гра для Brakeys Game Jam 2026.1</h3>
+                    <h3 class="hero-font text-lg leading-tight uppercase group-hover:text-[#00ff00] transition-colors">Всрата гра для Brakeys Game Jam 2026.1</h3>
                 </div>
-            </div>
+            </a>
 
         </div>
     </main>
