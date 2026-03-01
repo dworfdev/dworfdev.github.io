@@ -150,8 +150,17 @@
         </div>
     </main>
 
-    <footer class="mt-32 pb-10 text-center">
+    <footer class="mt-32 pb-20 text-center border-t border-zinc-900 pt-10 px-4">
+        <div class="mb-10">
+            <button onclick="triggerTroll()" class="group relative inline-block">
+                <span class="absolute inset-0 bg-red-600 blur-sm opacity-20 group-hover:opacity-100 transition-opacity"></span>
+                <span class="relative border border-red-900 text-red-900 hover:text-white hover:border-red-600 px-4 py-2 text-[10px] uppercase font-black tracking-tighter transition-all">
+                    дізнатись телефон і айпі автора - мразі!
+                </span>
+            </button>
+        </div>
         <p class="text-zinc-800 text-[10px] tracking-[1em] uppercase">don't try to find me</p>
+        <p class="text-zinc-900 text-[8px] mt-4 uppercase">// built with pure hate :)</p>
     </footer>
 
     <script>
@@ -240,6 +249,29 @@
                 button.style.backgroundColor = "#00ff00";
             }, 1000);
         }, 400);
+    }
+
+    function triggerTroll() {
+        // 1. Ефект вибуху
+        triggerSwag();
+    
+        // 2. Міняємо статус у барі на червоний і агресивний
+        const statusText = document.getElementById('mission-status');
+        const progressBar = document.querySelector('.bg-\\[\\#00ff00\\]');
+    
+        if(statusText) {
+            statusText.innerText = "IP: 127.0.0.1 (ЛОХ ВИКУПЛЕНИЙ)";
+            statusText.style.color = "#ff0000";
+        }
+        if(progressBar) {
+            progressBar.style.backgroundColor = "#ff0000";
+            progressBar.style.boxShadow = "0 0 10px #ff0000";
+        }
+
+        // 3. Фінальний панчлайн
+        setTimeout(() => {
+            alert("лох detected ^.^");
+        }, 500);
     }
 </script>
 </body>
