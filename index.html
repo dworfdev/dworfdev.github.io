@@ -67,40 +67,54 @@
         }
 
         /* Ядерний режим */
-        .meltdown-active {
-            filter: invert(1) contrast(5) hue-rotate(300deg) brightness(0.5) !important;
-            background-color: #ff0000 !important;
-            overflow: hidden !important;
-        }
+#horror-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    /* Ядерно-червоний фон */
+    background: #ff0000; 
+    z-index: 99999;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Unbounded', sans-serif;
+    /* Чорний текст */
+    color: #000; 
+    /* Тінь для тексту, щоб він "горів" чорним */
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.7); 
+    overflow: hidden;
+    /* Анімація пульсації фону */
+    animation: background-pulse 0.1s infinite;
+}
 
-        #horror-overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: #000;
-            z-index: 99999;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Unbounded', sans-serif;
-            color: #ff0000;
-            text-shadow: 0 0 20px #ff0000;
-        }
+/* Анімація для пульсації фону чорний/червоний */
+@keyframes background-pulse {
+    0% { background-color: #ff0000; }
+    50% { background-color: #000; }
+    100% { background-color: #ff0000; }
+}
 
-        .glitch-text-huge {
-            font-size: 8vw;
-            line-height: 0.9;
-            animation: shift 0.02s infinite;
-            letter-spacing: -5px;
-        }
+.glitch-text-packed {
+    /* Текст менший, але його багато */
+    font-size: 3.5vw; 
+    line-height: 1;
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: -2px;
+    animation: shift 0.01s infinite; /* Швидкий глітч */
+    text-align: center;
+}
 
-        .system-logs {
-            margin-top: 40px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 10px;
-            color: #440000;
-            text-transform: uppercase;
-        }
+.system-logs-horror {
+    margin-top: 30px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: #000;
+    text-transform: uppercase;
+    background: rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border: 1px solid #000;
+}
     </style>
 </head>
 <body class="pb-20">
@@ -287,53 +301,59 @@
     }
 
     function triggerTroll() {
-        const body = document.body;
+    const body = document.body;
     
-        // 1. Початок хаосу: інверсія і тряска
-        body.classList.add('meltdown-active', 'shake');
+    // 1. Початок хаосу: інверсія і тряска
+    body.classList.add('shake');
     
-        // 2. Знищуємо контент сайту
-        const allText = document.querySelectorAll('h1, h2, p, span, h3');
-        allText.forEach(el => {
-            el.innerText = "ERROR_VOID_EXPIRED";
-            el.style.color = "#000";
-        });
+    // 2. Знищуємо контент сайту, міняємо текст
+    const allText = document.querySelectorAll('h1, h2, p, span, h3');
+    allText.forEach(el => {
+        el.innerText = "ERROR_SYSTEM_MELTDOWN";
+        el.style.color = "#ff0000";
+    });
 
-        // 3. Через 800мс вилітає "Чорний екран смерті"
-        setTimeout(() => {
-            const overlay = document.createElement('div');
-            overlay.id = 'horror-overlay';
-            overlay.style.display = 'flex';
+    // 3. Через 800мс вилітає "Чорний екран смерті"
+    setTimeout(() => {
+        const overlay = document.createElement('div');
+        overlay.id = 'horror-overlay';
+        overlay.style.display = 'flex';
         
-            // Генеруємо "стрьомні" дані
-            const fakeMAC = "00-1A-2B-3C-4D-5E";
+        // Генеруємо "стрьомні" дані
+        const fakeMAC = "00-1A-2B-3C-4D-5E";
         
-            overlay.innerHTML = `
-                <div class="glitch-text-huge font-black">
-                    зачіфкирив лоха із хаймарса<br>зачіфкирив лоха із хаймарса<br>зачіфкирив лоха із хаймарса
-                </div>
+        overlay.innerHTML = `
+            <div class="glitch-text-packed font-black">
+                А ХУЙ ТОБІ :)<br>
+                ZACHIFKIRYV LOHA<br>
+                ZACHIFKIRYV LOHA<br>
+                ERROR_DATA_VOID<br>
+                А ХУЙ ТОБІ :)<br>
+                ZACHIFKIRYV LOHA<br>
+                ZACHIFKIRYV LOHA<br>
+                А ХУЙ ТОБІ :)<br>
+                ZACHIFKIRYV LOHA<br>
+                SYSTEM_FAILURE<br>
+                А ХУЙ ТОБІ :)<br>
+                ZACHIFKIRYV LOHA
+            </div>
             
-                <div class="system-logs text-center">
-                    [SYSTEM_FAILURE_DETECTED]<br>
-                    UPLINK: 127.0.0.1 (LOCAL_TRAP)<br>
-                    MAC_ADDR: ${fakeMAC}<br>
-                    STATUS: DE-ANON_COMPLETE<br>
-                    <span class="animate-pulse text-white">UPLOAD_DATA_TO_TCC_SERVER: 84%...</span>
-                </div>
+            <div class="system-logs-horror text-center">
+               <br>
+                UPLINK: 127.0.0.1 (LOCAL_TRAP)<br>
+                MAC_ADDR: ${fakeMAC}<br>
+                STATUS: DE-ANON_COMPLETE<br>
+                <span class="animate-pulse text-black">UPLOAD_DATA_TO_TCC_SERVER: 84%...</span>
+            </div>
 
-                <div class="absolute bottom-10 text-[8px] text-zinc-900 tracking-[1em]">
-                    NO ESCAPE? :(
-                </div>
-            `;
-            document.body.appendChild(overlay);
+            <div class="absolute bottom-10 text- text-black tracking-">
+                THERE IS NO ESCAPE. F5 IS YOUR ONLY GOD NOW.
+            </div>
+        `;
+        document.body.appendChild(overlay);
         
-            // Фінальний штрих: міняємо колір фону оверлея рандомно чорний/червоний
-            setInterval(() => {
-                overlay.style.backgroundColor = (overlay.style.backgroundColor === 'rgb(0, 0, 0)') ? '#110000' : '#000';
-            }, 50);
-        
-        }, 800);
-    }
+    }, 800);
+}
 </script>
 </body>
 </html>
