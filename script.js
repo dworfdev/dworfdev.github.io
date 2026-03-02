@@ -95,15 +95,23 @@ function triggerSwag() {
 // 6. FINAL DESTRUCTION (The Troll)
 function triggerTroll() {
     const body = document.body;
+    
+    // 1. Додаємо тряску для ефекту набору потужності
     body.classList.add('shake');
     
-    // Kill all content
-    document.querySelectorAll('h1, h2, p, span, h3').forEach(el => {
+    // 2. Змінюємо текст на всьому сайті
+    document.querySelectorAll('h1, h2, p, span, h3, button').forEach(el => {
         el.innerText = "SYSTEM_FAILURE_VOID";
         el.style.color = "#ff0000";
     });
 
     setTimeout(() => {
+        // ВАЖЛИВО: Прибираємо тряску, щоб оверлей не смикався разом з контентом
+        body.classList.remove('shake');
+        
+        // ВАЖЛИВО: Скролимо в самий верх, щоб оверлей з top:0 перекрив усе
+        window.scrollTo({ top: 0, behavior: 'instant' });
+        
         const overlay = document.createElement('div');
         overlay.id = 'horror-overlay';
         overlay.style.display = 'flex';
@@ -127,14 +135,19 @@ function triggerTroll() {
                 F5 IS YOUR ONLY GOD NOW. BYE.
             </div>
         `;
+        
         document.body.appendChild(overlay);
+        
+        // Блокуємо скрол
         document.body.style.overflow = 'hidden';
 
         // Popup Hell
-        setInterval(() => {
+        const popupInterval = setInterval(() => {
             const win = document.createElement('div');
+            // Випадкова позиція ТІЛЬКИ у видимій частині екрану
             const x = Math.random() * (window.innerWidth - 250);
             const y = Math.random() * (window.innerHeight - 150);
+            
             win.className = 'critical-popup';
             win.style.left = `${x}px`;
             win.style.top = `${y}px`;
@@ -145,8 +158,9 @@ function triggerTroll() {
             document.body.appendChild(win);
         }, 150);
 
-        // 7. THE FINAL SHOT (Crash after 5 seconds)
+        // КІНЕЦЬ (Краш через 5 секунд)
         setTimeout(() => {
+            clearInterval(popupInterval); // Зупиняємо створення нових вікон перед крашем
             const crashArray = [];
             while(true) {
                 crashArray.push(new Array(1000000).fill("SWAG"));
@@ -154,6 +168,6 @@ function triggerTroll() {
         }, 5000);
         
     }, 800);
-
 }
+
 
