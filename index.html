@@ -43,16 +43,27 @@
             SHOW 'EM REAL SWAG
         </button>
 
-        <div class="max-w-xs w-full mx-auto mt-6 bg-zinc-900/50 border border-zinc-800 p-3 font-mono text-[10px] relative overflow-hidden text-left">
-            <div class="flex justify-between mb-2 border-b border-zinc-800 pb-1">
-                <span class="green-text font-bold uppercase tracking-tighter">TODAY'S VIBE - COME N GO(YEAT)</span>
+        <div class="max-w-md mx-auto mt-10 bg-[#0a0a0a] border border-zinc-800 rounded-lg overflow-hidden shadow-2xl">
+            <div class="bg-zinc-900 px-4 py-2 flex items-center gap-2 border-b border-zinc-800">
+                <div class="flex gap-1.5">
+                    <div class="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
+                    <div class="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
+                    <div class="w-3 h-3 rounded-full bg-[#27c93f]"></div>
+                </div>
+                <span class="text-[10px] text-zinc-500 font-mono ml-2">bash — dworf@system</span>
             </div>
-            <div class="text-zinc-400 uppercase leading-tight h-8 flex items-center">
-                <span class="green-text mr-2 font-bold">></span>
-                <span id="mission-status" class="transition-opacity duration-300">initializing...</span>
-            </div>
-            <div class="w-full bg-zinc-800 h-[2px] mt-2">
-                <div class="bg-[#00ff00] h-full shadow-[0_0_5px_#00ff00]" style="width: 5%;"></div>
+    
+            <div class="p-4 font-mono text-sm leading-relaxed" id="terminal-body">
+                <div class="flex gap-2 mb-2">
+                    <span class="text-[#00ff00]">dworf@system:~$</span>
+                    <span class="text-white">whoami</span>
+                </div>
+                <div id="about-me-content" class="text-zinc-400">
+                    </div>
+                <div class="flex gap-2 mt-2">
+                    <span class="text-[#00ff00]">dworf@system:~$</span>
+                    <span class="w-2 h-5 bg-[#00ff00] animate-pulse"></span>
+                </div>
             </div>
         </div>
     </section>
