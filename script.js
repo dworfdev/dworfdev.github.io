@@ -8,32 +8,36 @@ function acceptDisclaimer() {
     localStorage.setItem('dworf_disclaimer_accepted', 'true');
 }
 
-// 2. Trap Hustle Statuses (Global Version)
-const statuses = [
-    "BITCH, NOW COME OUT AND PLAY",
-    "SHOW FACE, SOME WAY, JUST STAY",
-    "SHOW ME HOW YOU'RE THANKFUL NOW",
-    "'CAUSE I SHOWED YOU THE LIFE THAT YOU CRAVE",
-    "WON'T HOLD YA, I TOLD YA, I NEED YA LIKE NOW",
-    "I NEED YA TO PULL UP, GIVE ME FACE RIGHT NOW",
-    "I POP OUT IN THE CITY, SHOW FACE, SOME WAY",
-    "I POP OUT IN THE CITY",
-    "..."
-];
+const aboutMeText = `> NAME: DWORF
+> ROLE: TRAP DEVELOPER / CODE VANDAL
+> SKILLS: UNITY, C#, SHADERS, DIGITAL CHAOS
+> STATUS: 0-DAY HUSTLING IN KYIV
+> VIBE: "I POP OUT IN THE CITY, SHOW FACE, SOME WAY"`;
 
-function updateMissionStatus() {
-    const statusEl = document.getElementById('mission-status');
-    if (!statusEl) return;
+function typeWriter(text, elementId, speed = 30) {
     let i = 0;
-    setInterval(() => {
-        statusEl.style.opacity = '0';
-        setTimeout(() => {
-            statusEl.innerText = statuses[i];
-            statusEl.style.opacity = '1';
-            i = (i + 1) % statuses.length;
-        }, 300);
-    }, 3000);
+    const element = document.getElementById(elementId);
+    element.innerHTML = ""; // Очистка перед началом
+
+    function type() {
+        if (i < text.length) {
+            // Если встречаем \n, заменяем на <br>
+            if (text.charAt(i) === '\n') {
+                element.innerHTML += '<br>';
+            } else {
+                element.innerHTML += text.charAt(i);
+            }
+            i++;
+            setTimeout(type, speed);
+        }
+    }
+    type();
 }
+
+// Запуск при загрузке страницы
+document.addEventListener('DOMContentLoaded', () => {
+    typeWriter(aboutMeText, 'about-me-content');
+});
 
 // 3. Glitch Title Scramble
 const targetText = "DWORF.DEV";
@@ -182,3 +186,4 @@ window.addEventListener('mousemove', (e) => {
     cursor.style.left = e.clientX + 'px';
     cursor.style.top = e.clientY + 'px';
 });
+
