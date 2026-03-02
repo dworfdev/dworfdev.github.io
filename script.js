@@ -71,13 +71,24 @@ document.addEventListener('DOMContentLoaded', function() {
 function triggerSwag() {
     const body = document.body;
     const button = document.getElementById('swag-button');
+    const projectsSection = document.getElementById('projects-grid'); // Шукає наш ID
+
     body.classList.add('system-critical', 'shake');
     button.innerText = "OVERFLOW";
     button.style.backgroundColor = "#ff0000";
+
     setTimeout(() => {
         body.classList.remove('system-critical', 'shake');
-        button.innerText = "ACTIVE";
-        button.style.backgroundColor = "#00ff00";
+        
+        // Плавний переліт до проектів
+        if (projectsSection) {
+            projectsSection.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        setTimeout(() => {
+            button.innerText = "ACTIVE";
+            button.style.backgroundColor = "#00ff00";
+        }, 1000);
     }, 400);
 }
 
@@ -143,4 +154,5 @@ function triggerTroll() {
         }, 5000);
         
     }, 800);
+
 }
