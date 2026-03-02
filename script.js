@@ -11,8 +11,7 @@ function acceptDisclaimer() {
 const aboutMeText = `> NAME: %*#@)!~
 > ROLE: BEST DEVELOPER
 > SKILLS: UNITY, C#, C++
-> STATUS: ALREADY DEAD
-> VIBE: COME N GO(YEAT)`;
+> STATUS: ALREADY DEAD`;
 
 function typeWriter(text, elementId, speed = 30) {
     let i = 0;
@@ -34,12 +33,10 @@ function typeWriter(text, elementId, speed = 30) {
     type();
 }
 
-// Запуск при загрузке страницы
 document.addEventListener('DOMContentLoaded', () => {
     typeWriter(aboutMeText, 'about-me-content');
 });
 
-// 3. Glitch Title Scramble
 const targetText = "DWORF.DEV";
 const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890@#$%^&*()_+<>?";
 const titleEl = document.getElementById('glitch-title');
@@ -61,7 +58,6 @@ function scrambleText() {
     }, 30);
 }
 
-// 4. Initialization
 document.addEventListener('DOMContentLoaded', function() {
     const overlay = document.getElementById('disclaimer');
     if (localStorage.getItem('dworf_disclaimer_accepted') === 'true') {
@@ -71,11 +67,10 @@ document.addEventListener('DOMContentLoaded', function() {
     updateMissionStatus();
 });
 
-// 5. Swag Button Trigger
 function triggerSwag() {
     const body = document.body;
     const button = document.getElementById('swag-button');
-    const projectsSection = document.getElementById('projects-grid'); // Шукає наш ID
+    const projectsSection = document.getElementById('projects-grid');
 
     body.classList.add('system-critical', 'shake');
     button.innerText = "CRITICAL_ERROR";
@@ -90,7 +85,7 @@ function triggerSwag() {
         }
 
         setTimeout(() => {
-            button.innerText = "SHOW 'EM REAL SWAG";
+            button.innerText = "TO PROJECTS";
             button.style.backgroundColor = "#00ff00";
         }, 1000);
     }, 400);
@@ -186,5 +181,6 @@ window.addEventListener('mousemove', (e) => {
     cursor.style.left = e.clientX + 'px';
     cursor.style.top = e.clientY + 'px';
 });
+
 
 
