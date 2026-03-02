@@ -8,11 +8,11 @@ function acceptDisclaimer() {
     localStorage.setItem('dworf_disclaimer_accepted', 'true');
 }
 
-const aboutMeText = `> NAME: DWORF
-> ROLE: TRAP DEVELOPER / CODE VANDAL
-> SKILLS: UNITY, C#, SHADERS, DIGITAL CHAOS
-> STATUS: 0-DAY HUSTLING IN KYIV
-> VIBE: "I POP OUT IN THE CITY, SHOW FACE, SOME WAY"`;
+const aboutMeText = `> NAME: %*#@)!~
+> ROLE: BEST DEVELOPER
+> SKILLS: UNITY, C#, C++
+> STATUS: ALREADY DEAD
+> VIBE: COME N GO(YEAT)`;
 
 function typeWriter(text, elementId, speed = 30) {
     let i = 0;
@@ -186,4 +186,5 @@ window.addEventListener('mousemove', (e) => {
     cursor.style.left = e.clientX + 'px';
     cursor.style.top = e.clientY + 'px';
 });
+
 
