@@ -74,7 +74,7 @@ function triggerSwag() {
     const projectsSection = document.getElementById('projects-grid'); // Шукає наш ID
 
     body.classList.add('system-critical', 'shake');
-    button.innerText = "OVERFLOW";
+    button.innerText = "CRITICAL_ERROR";
     button.style.backgroundColor = "#ff0000";
 
     setTimeout(() => {
@@ -86,7 +86,7 @@ function triggerSwag() {
         }
 
         setTimeout(() => {
-            button.innerText = "ACTIVE";
+            button.innerText = "SHOW 'EM REAL SWAG";
             button.style.backgroundColor = "#00ff00";
         }, 1000);
     }, 400);
@@ -156,3 +156,4 @@ function triggerTroll() {
     }, 800);
 
 }
+
