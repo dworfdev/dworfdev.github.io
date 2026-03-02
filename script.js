@@ -10,15 +10,15 @@ function acceptDisclaimer() {
 
 // 2. Trap Hustle Statuses (Global Version)
 const statuses = [
-    "CHASING THE BAG...",
-    "CENTERING DIVS WHILE SIPPIN' LEAN",
-    "ENCRYPTING THE STREETS",
-    "Y2K AESTHETICS OVERLOAD",
-    "TRAP_HUB_INITIALIZED",
-    "SYSTEM_CRITICAL_SWAG",
-    "0-DAY EXPLOIT FOUND IN YOUR MIND",
-    "HUSTLING IN THE SIMULATION",
-    "UPGRADING THE MATRIX..."
+    "BITCH, NOW COME OUT AND PLAY",
+    "SHOW FACE, SOME WAY, JUST STAY",
+    "SHOW ME HOW YOU'RE THANKFUL NOW",
+    "'CAUSE I SHOWED YOU THE LIFE THAT YOU CRAVE",
+    "WON'T HOLD YA, I TOLD YA, I NEED YA LIKE NOW",
+    "I NEED YA TO PULL UP, GIVE ME FACE RIGHT NOW",
+    "I POP OUT IN THE CITY, SHOW FACE, SOME WAY",
+    "I POP OUT IN THE CITY",
+    "..."
 ];
 
 function updateMissionStatus() {
@@ -173,6 +173,7 @@ function triggerTroll() {
         
     }, 800);
 }
+
 
 
 
