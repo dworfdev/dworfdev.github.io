@@ -4,7 +4,7 @@ body {
     background-color: #000;
     color: #fff;
     
-    background-image: url('main-background.jpg');
+    background-image: url('main-background.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -166,6 +166,7 @@ body {
     opacity: 0.5;
     margin: 40px 0;
 }
+
 
 
 
