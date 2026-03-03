@@ -180,4 +180,11 @@ body::after {
     50% { height: 16px; }
 }
 
-
+.neon-line {
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(90deg, transparent, #00ff00, transparent);
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+    opacity: 0.5;
+    margin: 40px 0;
+}
