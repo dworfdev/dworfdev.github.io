@@ -182,5 +182,38 @@ window.addEventListener('mousemove', (e) => {
     cursor.style.top = e.clientY + 'px';
 });
 
+function initBinaryRain() {
+    const bg = document.querySelector('.binary-bg');
+    if (!bg) return;
 
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    const columns = Math.floor(width / 20); // Кількість колонок
+    const rows = Math.floor(height / 20);
+    
+    let binaryContent = '';
+    for (let i = 0; i < rows; i++) {
+        let row = '';
+        for (let j = 0; j < columns; j++) {
+            row += Math.round(Math.random());
+        }
+        binaryContent += `<div>${row}</div>`;
+    }
+    bg.innerHTML = binaryContent;
 
+    // Оновлюємо рандомні цифри кожні 100мс
+    setInterval(() => {
+        const lines = bg.querySelectorAll('div');
+        const randomLine = lines[Math.floor(Math.random() * lines.length)];
+        let newLine = '';
+        for (let j = 0; j < columns; j++) {
+            newLine += Math.round(Math.random());
+        }
+        randomLine.innerText = newLine;
+    }, 100);
+}
+
+// Додай виклик у свій DOMContentLoaded
+document.addEventListener('DOMContentLoaded', () => {
+    initBinaryRain();
+});
