@@ -186,22 +186,29 @@ function initBinaryRain() {
     const bg = document.querySelector('.binary-bg');
     if (!bg) return;
 
-    const width = window.innerWidth;
-    const height = window.innerHeight;
-    const columns = Math.floor(width / 20); // Кількість колонок
-    const rows = Math.floor(height / 20);
+    // Очищаємо перед генерацією
+    bg.innerHTML = '';
     
-    let binaryContent = '';
-    for (let i = 0; i < rows; i++) {
-        let row = '';
-        for (let j = 0; j < columns; j++) {
-            row += Math.round(Math.random());
-        }
-        binaryContent += `<div>${row}</div>`;
-    }
-    bg.innerHTML = binaryContent;
+    // Робимо так, щоб символи заповнювали весь екран
+    const fontSize = 14;
+    const columns = Math.ceil(window.innerWidth / fontSize);
+    const rows = Math.ceil(window.innerHeight / fontSize);
 
-    // Оновлюємо рандомні цифри кожні 100мс
+    for (let i = 0; i < rows; i++) {
+        const div = document.createElement('div');
+        div.style.display = 'flex';
+        div.style.justifyContent = 'space-between';
+        div.style.width = '100%';
+        
+        let content = '';
+        for (let j = 0; j < columns; j++) {
+            content += Math.round(Math.random());
+        }
+        div.innerText = content;
+        bg.appendChild(div);
+    }
+
+    // Динамічне оновлення рядків
     setInterval(() => {
         const lines = bg.querySelectorAll('div');
         const randomLine = lines[Math.floor(Math.random() * lines.length)];
@@ -210,10 +217,8 @@ function initBinaryRain() {
             newLine += Math.round(Math.random());
         }
         randomLine.innerText = newLine;
-    }, 100);
+    }, 50);
 }
 
-// Додай виклик у свій DOMContentLoaded
-document.addEventListener('DOMContentLoaded', () => {
-    initBinaryRain();
-});
+// Додай це, щоб при зміні розміру вікна дощ не ламався
+window.addEventListener('resize', initBinaryRain);
