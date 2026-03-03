@@ -2,9 +2,41 @@
 
 body {
     background-color: #000;
-    color: #fff;
+    /* Шар 1: Бінарний код, Шар 2: Подряпини/Гранж, Шар 3: Глибокий чорний */
+    background-image: 
+        linear-gradient(rgba(0, 20, 0, 0.2) 1px, transparent 1px),
+        url('https://www.transparenttextures.com/patterns/asfalt-dark.png'); /* Приклад гранжу */
+    background-size: 100% 3px, auto;
+    position: relative;
+}
+
+/* Ефект битого скла по краях, як на референсі */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url('https://raw.githubusercontent.com/dworfdev/assets/main/cracked-glass.png'); /* Тобі знадобиться такий оверлей */
+    background-size: cover;
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 999;
+}
+
+/* Бінарний дощ на фоні (можна зробити через окремий div) */
+.binary-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     font-family: 'JetBrains Mono', monospace;
-    overflow-x: hidden;
+    font-size: 10px;
+    color: rgba(0, 255, 0, 0.03);
+    overflow: hidden;
+    white-space: nowrap;
+    user-select: none;
+    pointer-events: none;
+    z-index: -1;
 }
 
 .hero-font { font-family: 'Unbounded', sans-serif; }
@@ -147,4 +179,5 @@ body {
     0%, 100% { height: 4px; }
     50% { height: 16px; }
 }
+
 
