@@ -17,11 +17,12 @@ body::after {
     content: "";
     position: fixed;
     inset: 0;
-    background-image: url('https://raw.githubusercontent.com/dworfdev/assets/main/cracked-glass.png');
-    background-size: cover;
-    opacity: 0.15;
+    background: 
+        linear-gradient(115deg, transparent 20%, rgba(255,255,255,0.05) 20.2%, transparent 20.4%),
+        linear-gradient(245deg, transparent 45%, rgba(255,255,255,0.08) 45.2%, transparent 45.5%),
+        linear-gradient(5deg, transparent 80%, rgba(255,255,255,0.05) 80.2%, transparent 80.4%);
     pointer-events: none;
-    z-index: 999;
+    z-index: 9999;
 }
 
 /* Бінарний дощ на фоні (можна зробити через окремий div) */
@@ -190,4 +191,5 @@ body::after {
     opacity: 0.5;
     margin: 40px 0;
 }
+
 
