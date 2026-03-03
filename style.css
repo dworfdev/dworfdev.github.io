@@ -2,12 +2,14 @@
 
 body {
     background-color: #000;
-    /* Шар 1: Бінарний код, Шар 2: Подряпини/Гранж, Шар 3: Глибокий чорний */
+    color: #fff;
     background-image: 
         linear-gradient(rgba(0, 20, 0, 0.2) 1px, transparent 1px),
-        url('https://www.transparenttextures.com/patterns/asfalt-dark.png'); /* Приклад гранжу */
+        url('https://www.transparenttextures.com/patterns/asfalt-dark.png'); 
     background-size: 100% 3px, auto;
     position: relative;
+    min-height: 100vh;
+    margin: 0;
 }
 
 /* Ефект битого скла по краях, як на референсі */
@@ -15,7 +17,7 @@ body::after {
     content: "";
     position: fixed;
     inset: 0;
-    background-image: url('https://raw.githubusercontent.com/dworfdev/assets/main/cracked-glass.png'); /* Тобі знадобиться такий оверлей */
+    background-image: url('https://raw.githubusercontent.com/dworfdev/assets/main/cracked-glass.png');
     background-size: cover;
     opacity: 0.15;
     pointer-events: none;
@@ -188,3 +190,4 @@ body::after {
     opacity: 0.5;
     margin: 40px 0;
 }
+
