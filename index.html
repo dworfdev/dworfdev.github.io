@@ -1,165 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dworf.dev | portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>DWORF.DEV | Personal Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="pb-20">
-    <div id="disclaimer" class="fixed inset-0 z-[100] bg-black flex items-center justify-center p-6 backdrop-blur-md">
-        <div class="max-w-2xl w-full border-2 border-red-600 p-8 bg-zinc-900 shadow-[0_0_50px_rgba(220,38,38,0.5)] relative">
-            <div class="absolute top-0 left-0 p-2 text-red-600 text-[10px] font-bold">WARNING_ALLERT</div>
-            <h2 class="hero-font text-2xl md:text-3xl text-red-600 mb-6 uppercase tracking-tighter">DISCLAIMER</h2>
-            <div class="space-y-4 text-sm md:text-base leading-relaxed font-bold border-l-2 border-red-600 pl-4">
-                <p>1. This content is a <span class="text-red-500 underline">digital performance</span>. If you can't handle the heat, stay out of the kitchen.</p>
-                <p>2. The author is not responsible for your fried neurons. Any resemblance to actual software is pure coincidence.</p>
-                <p>3. By entering, you confirm that your IQ is higher than your room temperature.</p>
-            </div>
-            <div class="mt-10 flex flex-col md:flex-row gap-4">
-                <button onclick="acceptDisclaimer()" class="bg-[#00ff00] text-black font-black px-6 py-3 uppercase hover:bg-white transition-all">I ACCEPT</button>
-                <a href="https://google.com" class="border border-zinc-700 text-zinc-500 px-6 py-3 uppercase text-center hover:text-white transition-all text-xs flex items-center justify-center">NAH</a>
-            </div>
-        </div>
-    </div>
+<body>
 
-    <section class="flex flex-col items-center pt-10 px-4">
-        <div class="max-w-3xl w-full">
-            <img src="volkswagen-bus.png" alt="Cyber Banner" class="w-full border border-zinc-800 shadow-2xl">
+    <div class="container">
+        <div class="banner-wrapper">
+            <img src="new-portfolio-banner.jpg" alt="DWORF Portfolio Banner" class="main-banner">
         </div>
 
-        <div class="text-center mt-8 px-2"> 
-            <h1 id="glitch-title" class="hero-font text-[12vw] sm:text-6xl md:text-8xl tracking-tighter uppercase leading-none min-h-[1em] break-words">
-                DWORF.DEV
-            </h1>
-            <p class="mt-4 text-[8px] sm:text-[10px] md:text-xs tracking-[0.2em] sm:tracking-[0.4em] uppercase text-zinc-500 font-bold">
-                DEVELOPER // PATRIOT
+        <div class="content-block">
+            <h2 class="section-title">WHO AM I?</h2>
+            <p class="intro-text">
+                > NAME: DWORF<br>
+                > ROLE: DEVELOPER<br>
+                > SKILLS: JAVA (SPRINGBOOT, JDBC, JAVAFX), C# (UNITY 2D & 3D)<br>
+                > STATUS: PENDING
             </p>
         </div>
 
-        <button id="swag-button" onclick="triggerSwag()" class="mt-10 bg-[#00ff00] text-black font-black px-8 py-3 text-xl uppercase tracking-tighter hover:bg-white transition-colors relative overflow-hidden">
-            TO PROJECTS
-        </button>
-    </section>
-
-    <div class="neon-line"></div>
-    <section class="max-w-5xl mx-auto mt-32 px-6 w-full">
-        <div class="flex items-center gap-4 mb-12">
-            <div class="h-[3px] w-10 bg-[#00ff00]"></div>
-            <h2 class="hero-font text-3xl uppercase tracking-widest">WHO AM I?</h2>
-        </div>
-
-        <div class="max-w-2xl bg-[#0a0a0a] border border-zinc-800 rounded-lg overflow-hidden shadow-2xl mx-auto md:mx-0">
-            <div class="bg-zinc-900 px-4 py-2 flex items-center gap-2 border-b border-zinc-800">
-                <div class="flex gap-1.5">
-                    <div class="w-2.5 h-2.5 rounded-full bg-[#ff5f56]"></div>
-                    <div class="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]"></div>
-                    <div class="w-2.5 h-2.5 rounded-full bg-[#27c93f]"></div>
-                </div>
-                <span class="text-[10px] text-zinc-500 font-mono ml-2 uppercase tracking-widest">bash</span>
-             </div>
-                
-            <div class="p-6 font-mono text-sm leading-relaxed" id="terminal-body">
-                <div class="flex gap-2 mb-4">
-                    <span class="text-[#00ff00]">dworf@system:~$</span>
-                    <span class="text-white">whoami</span>
-                </div>
-                    
-                <div id="about-me-content" class="text-zinc-400 space-y-1">
-                </div>
-                    
-                <div class="flex gap-2 mt-4">
-                    <span class="text-[#00ff00]">dworf@system:~$</span>
-                    <span class="w-2 h-5 bg-[#00ff00] animate-pulse"></span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="neon-line"></div>
-    <main id="projects-grid" class="max-w-5xl mx-auto mt-24 px-6">
-        <div class="flex items-center gap-4 mb-12">
-            <div class="h-[3px] w-10 bg-[#00ff00]"></div>
-            <h2 class="hero-font text-3xl uppercase tracking-widest">PROJECTS</h2>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-16">
-            <a href="https://dworfdev.github.io/codeFlow/" target="_blank" class="group block">
-                <div class="aspect-video neon-border relative flex items-center justify-center overflow-hidden bg-zinc-900">
-                    <img src="code-flow-banner.png" alt="Project" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-100 transition-all duration-500">
-                    <div class="scanline absolute inset-0 z-10 group-hover:opacity-0 transition-all duration-500"></div>
-                    <span class="text-4xl green-text font-black z-20 relative group-hover:opacity-0 transition-all duration-500">>_</span>
-                </div>
-                <div class="mt-4">
-                    <p class="text-[10px] green-text font-bold mb-1">UI</p>
-                    <h3 class="hero-font text-lg leading-tight uppercase group-hover:text-[#00ff00] transition-colors">Teaching you the basics of Unity C#</h3>
-                </div>
-            </a>
-
-            <a href="https://chr0makid.itch.io/inside-the-box" target="_blank" class="group block">
-                <div class="aspect-video neon-border relative flex items-center justify-center overflow-hidden bg-zinc-900">
-                    <img src="inside-the-box-banner.png" alt="Project" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-100 transition-all duration-500">
-                    <div class="scanline absolute inset-0 z-10 group-hover:opacity-0 transition-all duration-500"></div>
-                    <span class="text-4xl green-text font-black z-20 relative group-hover:opacity-0 transition-all duration-500">>_</span>
-                </div>
-                <div class="mt-4">
-                    <p class="text-[10px] green-text font-bold mb-1">3D</p>
-                    <h3 class="hero-font text-lg leading-tight uppercase group-hover:text-[#00ff00] transition-colors">Inside The Box - shitty game for Brakeys Game Jam 2026.1</h3>
-                </div>
-            </a>
-        </div>
-    </main>
-
-    <div class="neon-line"></div>
-    <section class="max-w-5xl mx-auto mt-32 mb-16 px-6 w-full flex justify-center">
-         <div class="relative group w-full max-w-3xl">
-             <div class="absolute -inset-1.5 bg-gradient-to-r from-[#ff0080] to-[#7928ca] rounded-xl blur-lg opacity-20 group-hover:opacity-40 transition duration-1000"></div>
-        
-             <div class="relative flex flex-col md:flex-row items-center bg-[#050505] border border-zinc-900 rounded-xl p-8 gap-10 shadow-2xl">
-                 <div class="relative w-48 h-48 md:w-56 md:h-56 flex-shrink-0">
-                    <img src="audio-cover-image.jpg" alt="GALORE" class="w-full h-full object-cover rounded-lg shadow-[0_0_30px_rgba(255,0,128,0.2)] group-hover:shadow-[0_0_40px_rgba(255,0,128,0.4)] transition-all duration-500">
-                  </div>
-
-                 <div class="flex flex-col flex-grow text-center md:text-left w-full">
-                    <span class="text-xs text-[#ff0080] font-black tracking-[0.5em] uppercase mb-3 opacity-80">NOW PLAYIN'</span>
-                    <h3 class="text-white font-black text-4xl md:text-5xl leading-none tracking-tighter uppercase mb-2">GALORE</h3>
-                    <p class="text-zinc-400 text-lg font-bold uppercase tracking-[0.2em] mb-8">Clonnex ft. Asteria</p>
-                
-                     <div class="flex flex-col gap-2">
-                         <div class="flex justify-between text-[10px] text-zinc-600 font-mono uppercase tracking-widest">
-                            <span>0:42</span>
-                            <span>2:42</span>
-                         </div>
-                        <div class="h-[2px] bg-zinc-900 w-full relative overflow-hidden rounded-full">
-                             <div class="absolute inset-y-0 left-0 bg-[#ff0080] w-[42%] shadow-[0_0_10px_#ff0080]"></div>
-                         </div>
+        <div class="content-block">
+            <h2 class="section-title">PROJECTS</h2>
+            
+            <div class="projects-list">
+                <div class="project-card">
+                    <img src="code-flow-banner.png" alt="CodeFlow">
+                    <div class="project-info">
+                        <h3>Teaching you the basics of Unity C#</h3>
+                        <p>UI / Unity Educational Project</p>
+                        <a href="https://dworfdev.github.io/codeFlow/" target="_blank">[ VISIT PROJECT ]</a>
                     </div>
                 </div>
 
-                <div class="flex gap-1.5 items-end h-16 opacity-80">
-                     <div class="w-[5px] bg-[#ff0080] animate-[bounce_0.8s_infinite_0.1s] rounded-full"></div>
-                    <div class="w-[5px] bg-[#ff0080] animate-[bounce_1.2s_infinite_0.3s] rounded-full"></div>
-                     <div class="w-[5px] bg-[#ff0080] animate-[bounce_1s_infinite_0.5s] rounded-full"></div>
-                     <div class="w-[5px] bg-[#ff0080] animate-[bounce_1.4s_infinite_0.2s] rounded-full"></div>
-                     <div class="w-[5px] bg-[#ff0080] animate-[bounce_0.9s_infinite_0.4s] rounded-full"></div>
-                 </div>
-             </div>
+                <div class="project-card">
+                    <img src="inside-the-box-banner.png" alt="Inside The Box">
+                    <div class="project-info">
+                        <h3>Inside The Box - Brakeys Game Jam</h3>
+                        <p>3D / Unity Game</p>
+                        <a href="https://chr0makid.itch.io/inside-the-box" target="_blank">[ VISIT PROJECT ]</a>
+                    </div>
+                </div>
+            </div>
         </div>
-     </section>
 
-    <footer class="mt-32 pb-20 text-center border-t border-zinc-900 pt-10 px-4">
-        <div class="mb-10">
-            <button onclick="triggerTroll()" class="group relative inline-block">
-                <span class="absolute inset-0 bg-red-600 blur-sm opacity-20 group-hover:opacity-100 transition-opacity"></span>
-                <span class="relative border border-red-900 text-red-900 hover:text-white hover:border-red-600 px-4 py-2 text-[10px] uppercase font-black tracking-tighter transition-all">
-                    DON'T TOUCH
-                </span>
-            </button>
-        </div>
-        <p class="text-zinc-800 text-[10px] tracking-[1em] uppercase">DWORF.DEV</p>
-    </footer>
+        <footer>
+            <p>DWORF.DEV — 2026</p>
+        </footer>
+    </div>
 
-    <script src="script.js"></script>
 </body>
 </html>
