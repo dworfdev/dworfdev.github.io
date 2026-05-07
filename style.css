@@ -92,6 +92,43 @@ body {
     margin: 0;
 }
 
+/* Кнопка назад в ретро стиле */
+.back-button {
+    background: #000080;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    font-family: "Tahoma", sans-serif;
+    font-size: 11px;
+    cursor: pointer;
+    box-shadow: 2px 2px 0px #000;
+}
+
+.back-button:hover {
+    background: #0000ff;
+}
+
+.screenshot-gallery-retro {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    background: #000;
+    padding: 15px;
+    border: 1px solid #333;
+}
+
+.screenshot-gallery-retro img {
+    width: 100%;
+    height: auto;
+    border: 1px solid #444;
+    transition: transform 0.2s;
+}
+
+.screenshot-gallery-retro img:hover {
+    transform: scale(1.02);
+    border-color: #00ff41;
+}
+
 footer {
     text-align: center;
     color: #bbb;
