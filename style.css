@@ -77,9 +77,25 @@ body {
     color: #00ff00;
 }
 
+.project-link-title {
+    display: block;
+    margin: 0 0 10px 0;
+    font-size: 16px;
+    color: #00ff00;
+    text-decoration: none;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+.project-link-title:hover {
+    text-decoration: underline;
+    color: #fff;
+}
+
 .project-info p {
     font-size: 12px;
     color: #ccc;
+    margin: 0;
 }
 
 .project-info a {
@@ -95,6 +111,7 @@ body {
     text-decoration: underline;
     color: #fff;
 }
+
 
 footer {
     text-align: center;
