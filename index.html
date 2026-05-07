@@ -24,38 +24,98 @@
             </div>
         </div>
 
-        <div class="window-block padding-20">
-            <h2 class="section-title">PROJECTS</h2>
-            
-            <div class="projects-grid">
+        <div class="window-block padding-20" id="projects-window">
+            <h2 class="section-title" id="projects-title">PROJECTS</h2>
+    
+            <div id="projects-main-grid" class="projects-grid">
                 <div class="project-card">
                     <div class="aspect-ratio-16-9">
                         <img src="code-flow-banner.png" alt="CodeFlow">
                     </div>
                     <div class="project-content">
-                        <a href="https://dworfdev.github.io/codeFlow/" target="_blank" class="bright-link">
+                        <a href="javascript:void(0)" onclick="loadProjectPage('codeflow-template')" class="bright-link">
                             Teaching you the basics of Unity C#
                         </a>
-                        <p class="project-subtitle">App | Educational</p>
+                        <p class="project-subtitle">UI / Unity Educational Project</p>
                     </div>
                 </div>
 
                 <div class="project-card">
                     <div class="aspect-ratio-16-9">
-                        <img src="inside-the-box-banner.png" alt="Inside The Box">
+                    <img src="inside-the-box-banner.png" alt="Inside The Box">
                     </div>
                     <div class="project-content">
                         <a href="https://chr0makid.itch.io/inside-the-box" target="_blank" class="bright-link">
                             Inside The Box - Brakeys Game Jam
                         </a>
-                        <p class="project-subtitle">3D | Game</p>
+                        <p class="project-subtitle">3D / Unity Game</p>
                     </div>
                 </div>
             </div>
+
+            <div id="project-page-container" style="display: none;"></div>
         </div>
+
+        <template id="codeflow-template">
+            <div class="project-page">
+                <button onclick="unloadProjectPage()" class="back-button">[ ← BACK TO LIST ]</button>
+        
+                <h1 class="bright-link" style="font-size: 28px; margin: 20px 0 10px 0;">CodeFlow (Unity C#)</h1>
+        
+                <div class="terminal-text" style="margin-bottom: 25px;">
+                    <p><strong>MVP: The very first available version of this project.</strong></p>
+                    <p>An app that helps complete beginners learn Unity C# using a theoretical foundation and hands-on practice by building code from pre-built blocks.</p>
+                </div>
+
+                <div class="download-section" style="margin-bottom: 30px;">
+                    <a href="https://github.com/dworfdev/dworfdev.github.io/releases/download/v1.0.0/MVP.17.01.2026.apk" 
+                       class="bright-link" 
+                       style="border: 2px solid #00ff41; padding: 15px; display: inline-block; background: #000;">
+                        DOWNLOAD MVP.17.01.2026.apk
+                    </a>
+                    <p class="project-subtitle" style="margin-top: 8px;">v1.0.0 | SHA-256 Verified</p>
+                </div>
+
+                <h2 class="section-title" style="font-size: 16px;">OVERVIEW</h2>
+                <div class="screenshot-gallery-retro">
+                    <img src="images/screen_1.jpg" alt="1">
+                    <img src="images/screen_2.jpg" alt="2">
+                    <img src="images/screen_3.jpg" alt="3">
+                    <img src="images/screen_4.jpg" alt="4">
+                </div>
+
+                <div class="terminal-text" style="margin-top: 30px; font-size: 12px; opacity: 0.8;">
+                    <p>> SYSTEM_LOG: This version is in active development. Bugs may occur.</p>
+                </div>
+            </div>
+        </template>
 
         <footer>2026</footer>
     </div>
+
+    <script>
+        function loadProjectPage(templateId) {
+            const template = document.getElementById(templateId);
+            const container = document.getElementById('project-page-container');
+            const grid = document.getElementById('projects-main-grid');
+            const title = document.getElementById('projects-title');
+
+            grid.style.display = 'none';
+            title.style.display = 'none';
+
+            container.innerHTML = '';
+            container.appendChild(template.content.cloneNode(true));
+            container.style.display = 'block';
+        
+            document.getElementById('projects-window').scrollIntoView({ behavior: 'smooth' });
+    	}
+
+        function unloadProjectPage() {
+            document.getElementById('project-page-container').style.display = 'none';
+            document.getElementById('projects-main-grid').style.display = 'grid';
+            document.getElementById('projects-title').style.display = 'block';
+        }
+    </script>
 
 </body>
 </html>
