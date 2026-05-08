@@ -1,126 +1,120 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>dworf.dev - Personal Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>dworf.dev — Personal Portfolio</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
-    <div class="main-container">
-        <div class="window-block">
-            <div class="aspect-ratio-16-9">
-                <img src="new-portfolio-banner.png" alt="Banner">
-            </div>
-        </div>
+<div class="container">
 
-        <div class="window-block padding-20">
-            <h2 class="section-title">ABOUT ME</h2>
-            <div class="terminal-text">
-                > NAME: FEDOR D.<br>
-                > ROLE: BACKEND DEVELOPER<br>
-                > STACK: JAVA(SPRINGBOOT, JDBC, JAVAFX) & C#(UNITY 2D & 3D)<br>
-                > STATUS: PENDING
-            </div>
-        </div>
-
-        <div class="window-block padding-20" id="projects-window">
-            <h2 class="section-title" id="projects-title">PROJECTS</h2>
-    
-            <div id="projects-main-grid" class="projects-grid">
-                <div class="project-card">
-                    <div class="aspect-ratio-16-9">
-                        <img src="prev/code-flow-banner.png" alt="CodeFlow">
-                    </div>
-                    <div class="project-content">
-                        <a href="javascript:void(0)" onclick="loadProjectPage('codeflow-template')" class="bright-link">
-                            Teaching you the basics of Unity C#
-                        </a>
-                        <p class="project-subtitle">UI / Unity Educational Project</p>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="aspect-ratio-16-9">
-                    <img src="prev/inside-the-box-banner.png" alt="Inside The Box">
-                    </div>
-                    <div class="project-content">
-                        <a href="https://chr0makid.itch.io/inside-the-box" target="_blank" class="bright-link">
-                            Inside The Box - Brakeys Game Jam
-                        </a>
-                        <p class="project-subtitle">3D / Unity Game</p>
-                    </div>
-                </div>
-            </div>
-
-            <div id="project-page-container" style="display: none;"></div>
-        </div>
-
-        <template id="codeflow-template">
-            <div class="project-page">
-                <button onclick="unloadProjectPage()" class="back-button">[ ← BACK TO LIST ]</button>
-        
-                <div style="margin-top: -10px; margin-bottom: 25px;">
-                    <h1 style="color: #000080; font-family: 'Tahoma', sans-serif; font-size: 22px; font-weight: bold; text-transform: uppercase; margin: 0; padding: 0 0 5px 0; line-height: 1.2;">
-                        CodeFlow(Unity C#)
-                    </h1>
-                    <div style="height: 2px; background-color: #000080; width: 100%;"></div>
-                </div>
-        
-                <div class="terminal-text" style="margin-bottom: 25px;">
-                    <p><strong>MVP: The very first available version of this project.</strong></p>
-                    <p>An app that helps complete beginners learn Unity C# using a theoretical foundation and hands-on practice by building code from pre-built blocks.</p>
-                </div>
-
-                <div class="download-section" style="margin-bottom: 30px;">
-                    <a href="https://github.com/dworfdev/dworfdev.github.io/releases/download/v1.0.0/MVP.17.01.2026.apk" 
-                       class="bright-link" 
-                       style="border: 2px solid #00ff41; padding: 15px; display: inline-block; background: #000;">
-                        DOWNLOAD MVP.17.01.2026.apk
-                    </a>
-                    <p class="project-subtitle" style="margin-top: 8px;">v1.0.0 | SHA-256 Verified</p>
-                </div>
-
-                <h2 class="section-title" style="font-size: 16px;">OVERVIEW</h2>
-                <div class="screenshot-gallery-retro">
-                    <img src="img/screen_1.jpg" alt="1">
-                    <img src="img/screen_2.jpg" alt="2">
-                    <img src="img/screen_3.jpg" alt="3">
-                    <img src="img/screen_4.jpg" alt="4">
-                </div>
-
-                <div style="margin-top: 30px; font-size: 12px; color: #666;">
-                    <p>dworf.dev | 2025</p>
-                </div>
-            </div>
-        </template>
-
-        <footer>dworf.dev | 2026</footer>
+  <!-- BANNER -->
+  <!-- Замени "banner-bg.png" на имя своего файла -->
+  <div class="block">
+    <div class="banner">
+      <img class="banner-bg" src="banner-bg.png" alt="">
+      <div class="banner-overlay">
+        <div class="banner-title">dworf.dev</div>
+        <div class="banner-sub">backend developer &nbsp;·&nbsp; game dev</div>
+      </div>
     </div>
+  </div>
 
-    <script>
-        function loadProjectPage(templateId) {
-            const template = document.getElementById(templateId);
-            const container = document.getElementById('project-page-container');
-            const grid = document.getElementById('projects-main-grid');
-            const title = document.getElementById('projects-title');
+  <!-- ABOUT -->
+  <div class="block">
+    <div class="pad">
+      <div class="section-title">About Me</div>
+      <div class="terminal">
+        <div><span class="term-key">&gt; NAME &nbsp;&nbsp;&nbsp;</span> FEDOR D.</div>
+        <div><span class="term-key">&gt; ROLE &nbsp;&nbsp;&nbsp;</span> BACKEND DEVELOPER</div>
+        <div><span class="term-key">&gt; STACK &nbsp;&nbsp;</span> JAVA — Spring Boot, JDBC, JavaFX</div>
+        <div><span class="term-key">&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> C# — Unity 2D &amp; 3D</div>
+        <div><span class="term-key">&gt; STATUS &nbsp;</span><span class="term-status">PENDING</span></div>
+      </div>
+    </div>
+  </div>
 
-            grid.style.display = 'none';
-            title.style.display = 'none';
+  <!-- PROJECTS -->
+  <div class="block" id="projects-block">
+    <div class="pad">
 
-            container.innerHTML = '';
-            container.appendChild(template.content.cloneNode(true));
-            container.style.display = 'block';
-        
-            document.getElementById('projects-window').scrollIntoView({ behavior: 'smooth' });
-    	}
+      <div id="projects-main">
+        <div class="section-title">Projects</div>
+        <div class="projects-grid">
 
-        function unloadProjectPage() {
-            document.getElementById('project-page-container').style.display = 'none';
-            document.getElementById('projects-main-grid').style.display = 'grid';
-            document.getElementById('projects-title').style.display = 'block';
-        }
-    </script>
+          <div class="project-card" onclick="openProject('codeflow')">
+            <div class="card-thumb">
+              <img src="prev/code-flow-banner.png" alt="CodeFlow"
+                   onerror="this.style.display='none'">
+              <div class="card-thumb-fallback">[ NO PREVIEW ]</div>
+            </div>
+            <div class="card-body">
+              <span class="card-title">Teaching you the basics of Unity C#</span>
+              <span class="card-meta">UI / Unity Educational Project</span>
+            </div>
+          </div>
 
+          <a class="project-card"
+             href="https://chr0makid.itch.io/inside-the-box"
+             target="_blank"
+             onclick="event.stopPropagation()">
+            <div class="card-thumb">
+              <img src="prev/inside-the-box-banner.png" alt="Inside The Box"
+                   onerror="this.style.display='none'">
+              <div class="card-thumb-fallback">[ NO PREVIEW ]</div>
+            </div>
+            <div class="card-body">
+              <span class="card-title">Inside The Box — Brackeys Game Jam</span>
+              <span class="card-meta">3D / Unity Game</span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- PROJECT PAGE: CODEFLOW -->
+      <div id="page-codeflow" class="project-page">
+
+        <!-- Fix: button above heading, no overlap -->
+        <div class="project-page-header">
+          <button class="back-btn" onclick="closeProject()">&#8592; Back to list</button>
+          <div class="project-name">CodeFlow (Unity C#)</div>
+        </div>
+        <div class="project-rule"></div>
+
+        <div class="terminal" style="margin-bottom:18px;">
+          <div style="margin-bottom:6px;"><span class="term-key">MVP</span> — first available version</div>
+          <div>An app that helps complete beginners learn Unity C# using a theoretical foundation and hands-on practice by building code from pre-built blocks.</div>
+        </div>
+
+        <!-- Redesigned download button -->
+        <a href="https://github.com/dworfdev/dworfdev.github.io/releases/download/v1.0.0/MVP.17.01.2026.apk"
+           class="download-btn" download>
+          <div class="download-btn-icon">&#8659;</div>
+          <div class="download-btn-text">
+            <span class="download-btn-label">Download MVP.17.01.2026.apk</span>
+            <span class="download-btn-sub">v1.0.0 &nbsp;·&nbsp; Android APK &nbsp;·&nbsp; SHA-256 Verified</span>
+          </div>
+        </a>
+
+        <div class="section-title" style="font-size:12px; margin-top:24px; margin-bottom:12px;">Screenshots</div>
+        <div class="screenshots">
+          <img src="img/screen_1.jpg" alt="1" onerror="this.outerHTML='<div class=screenshot-ph>screen_1.jpg</div>'">
+          <img src="img/screen_2.jpg" alt="2" onerror="this.outerHTML='<div class=screenshot-ph>screen_2.jpg</div>'">
+          <img src="img/screen_3.jpg" alt="3" onerror="this.outerHTML='<div class=screenshot-ph>screen_3.jpg</div>'">
+          <img src="img/screen_4.jpg" alt="4" onerror="this.outerHTML='<div class=screenshot-ph>screen_4.jpg</div>'">
+        </div>
+
+        <div class="page-meta">dworf.dev · 2025</div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>dworf.dev &nbsp;·&nbsp; 2026</footer>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
