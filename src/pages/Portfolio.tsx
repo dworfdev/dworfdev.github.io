@@ -5,7 +5,7 @@ import {
   Menu, X, Code2, Zap, Smartphone, Database, 
   ExternalLink, Mail, ChevronRight, Download, Linkedin
 } from "lucide-react";
-import portraitImg from "@/assets/portrait.png";
+import portraitImg from "@assets/portrait.png";
 
 // --- Components ---
 
@@ -30,7 +30,7 @@ const Navbar = () => {
   ];
 
   return (
-    <header 
+    <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         scrolled ? "bg-background/80 backdrop-blur-md border-b border-border/50 py-4" : "bg-transparent py-6"
       }`}
@@ -43,7 +43,7 @@ const Navbar = () => {
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-1 bg-card/50 backdrop-blur-sm border border-border rounded-full px-2 py-1">
           {navLinks.map((link) => (
-            <a 
+            <a
               key={link.name}
               href={link.href}
               className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground rounded-full hover:bg-secondary/50 transition-colors"
@@ -55,7 +55,7 @@ const Navbar = () => {
 
         {/* Desktop CTA */}
         <div className="hidden md:block">
-          <a 
+          <a
             href="mailto:hello@example.com"
             className="px-5 py-2.5 rounded-full border border-border text-sm font-medium hover:bg-primary hover:text-primary-foreground transition-all duration-300"
           >
@@ -64,7 +64,7 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Toggle */}
-        <button 
+        <button
           className="md:hidden text-foreground p-2"
           onClick={() => setIsOpen(!isOpen)}
         >
@@ -76,7 +76,7 @@ const Navbar = () => {
       {isOpen && (
         <div className="md:hidden absolute top-full left-0 w-full bg-background border-b border-border py-4 px-6 flex flex-col gap-4 shadow-xl">
           {navLinks.map((link) => (
-            <a 
+            <a
               key={link.name}
               href={link.href}
               className="text-lg font-medium text-muted-foreground hover:text-foreground py-2"
@@ -85,7 +85,7 @@ const Navbar = () => {
               {link.name}
             </a>
           ))}
-          <a 
+          <a
             href="mailto:hello@example.com"
             className="w-full text-center py-3 mt-4 rounded-lg bg-primary text-primary-foreground font-medium"
             onClick={() => setIsOpen(false)}
@@ -103,7 +103,7 @@ const Hero = () => {
     <section className="relative min-h-[100dvh] flex items-center pt-24 pb-12 overflow-hidden">
       <div className="container mx-auto px-6 md:px-12 z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
@@ -113,19 +113,19 @@ const Hero = () => {
               <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
               Available for work
             </div>
-            
+
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[1.1]">
               Front-End <br />
               <span className="text-muted-foreground">Developer</span>
             </h1>
-            
+
             <p className="text-lg md:text-xl text-muted-foreground max-w-lg leading-relaxed">
               I build clean, high-performance interfaces that turn ideas into exceptional digital experiences.
             </p>
-            
+
             <div className="flex flex-wrap items-center gap-4 pt-4">
-              <a 
-                href="#" 
+              <a
+                href="#"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-medium hover:opacity-90 transition-opacity"
               >
                 <Download size={18} />
@@ -141,8 +141,8 @@ const Hero = () => {
               </div>
             </div>
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
@@ -150,9 +150,9 @@ const Hero = () => {
           >
             {/* Minimalist image treatment */}
             <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10" />
-            <img 
-              src={portraitImg} 
-              alt="Developer Portrait" 
+            <img
+              src={portraitImg}
+              alt="Developer Portrait"
               className="w-full h-full object-cover grayscale opacity-90 mix-blend-lighten"
             />
           </motion.div>
@@ -193,7 +193,7 @@ const Services = () => {
   return (
     <section id="services" className="py-24 md:py-32 relative">
       <div className="container mx-auto px-6 md:px-12">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -247,7 +247,7 @@ const About = () => {
           >
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">Crafted with Purpose</h2>
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-16 max-w-2xl mx-auto">
-              I believe great software is built at the intersection of rigorous engineering and thoughtful design. 
+              I believe great software is built at the intersection of rigorous engineering and thoughtful design.
               Every line of code should serve the user experience.
             </p>
           </motion.div>
@@ -258,7 +258,7 @@ const About = () => {
               { num: "02", title: "Design", desc: "Translating ideas into intuitive interfaces" },
               { num: "03", title: "Deliver", desc: "Shipping polished, production-ready code" }
             ].map((step, i) => (
-              <motion.div 
+              <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -274,7 +274,7 @@ const About = () => {
             ))}
           </div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -322,7 +322,7 @@ const Skills = () => {
   return (
     <section id="skills" className="py-24 md:py-32">
       <div className="container mx-auto px-6 md:px-12">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -339,7 +339,7 @@ const Skills = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {categories.map((cat, i) => (
-            <motion.div 
+            <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -388,7 +388,7 @@ const Projects = () => {
   return (
     <section id="projects" className="py-24 md:py-32 bg-card/30 border-y border-border/50">
       <div className="container mx-auto px-6 md:px-12">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -400,7 +400,7 @@ const Projects = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((proj, i) => (
-            <motion.div 
+            <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -410,7 +410,7 @@ const Projects = () => {
             >
               <div className={`h-48 w-full bg-gradient-to-br ${proj.color} border-b border-border/50 flex items-center justify-center relative overflow-hidden`}>
                 {/* Decorative pattern for the placeholder */}
-                <div className="absolute inset-0 opacity-10" 
+                <div className="absolute inset-0 opacity-10"
                      style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '24px 24px' }}>
                 </div>
                 <div className="w-16 h-16 rounded-2xl bg-card border border-border shadow-lg flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
@@ -430,7 +430,7 @@ const Projects = () => {
                   ))}
                 </div>
                 <a href="#" className="inline-flex items-center gap-2 text-sm font-medium hover:text-primary transition-colors group/link">
-                  View Project 
+                  View Project
                   <ChevronRight size={16} className="transform group-hover/link:translate-x-1 transition-transform" />
                 </a>
               </div>
