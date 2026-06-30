@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="7a54ca2e-4c3f-4cf2-a8bf-f63ece3d1e02" name="Changes" comment="changed footer text">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +64,7 @@
       <recent name="C:\Users\dvorn\IdeaProjects\dworfdev.github.io" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\dvorn\IdeaProjects\dworfdev.github.io\imgs" />
       <recent name="C:\Users\dvorn\IdeaProjects\dworfdev.github.io" />
       <recent name="C:\Users\dvorn\IdeaProjects\dworfdev.github.io\.idea" />
     </key>

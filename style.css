@@ -381,21 +381,6 @@ section { padding: 96px 0; }
   transform: translateY(-4px);
 }
 
-.service-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  background: rgba(255,255,255,0.05);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 24px;
-  color: var(--text);
-  transition: transform 0.3s;
-}
-.service-card:hover .service-icon { transform: scale(1.1); }
-.service-icon svg { width: 22px; height: 22px; }
-
 .service-title {
   font-size: 18px;
   font-weight: 600;
