@@ -1,10 +1,8 @@
-/* ===== NAVBAR SCROLL ===== */
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
   navbar.classList.toggle('scrolled', window.scrollY > 20);
 }, { passive: true });
 
-/* ===== HAMBURGER MENU ===== */
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobile-menu');
 
@@ -14,7 +12,6 @@ hamburger.addEventListener('click', () => {
   hamburger.setAttribute('aria-expanded', isOpen);
 });
 
-// Close on nav link click
 mobileMenu.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => {
     mobileMenu.classList.remove('open');
@@ -23,7 +20,6 @@ mobileMenu.querySelectorAll('a').forEach(link => {
   });
 });
 
-// Close on outside click
 document.addEventListener('click', (e) => {
   if (!navbar.contains(e.target)) {
     mobileMenu.classList.remove('open');
@@ -31,7 +27,6 @@ document.addEventListener('click', (e) => {
   }
 });
 
-/* ===== SCROLL ANIMATIONS (IntersectionObserver) ===== */
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -42,7 +37,6 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-/* ===== COUNTER ANIMATION ===== */
 function animateCount(el, target, suffix = '') {
   const duration = 1600;
   const start = performance.now();
@@ -71,7 +65,6 @@ const statsObserver = new IntersectionObserver((entries) => {
 const statsBanner = document.getElementById('stats-banner');
 if (statsBanner) statsObserver.observe(statsBanner);
 
-/* ===== ACTIVE NAV LINK ===== */
 const sections = document.querySelectorAll('section[id]');
 const navLinksAll = document.querySelectorAll('.nav-links a, #mobile-menu a:not(.mobile-cta)');
 

@@ -1,4 +1,3 @@
-/* ===== RESET & BASE ===== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
@@ -31,12 +30,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 ::selection { background: rgba(255,255,255,0.15); }
 
-/* Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 3px; }
 
-/* ===== LAYOUT ===== */
 .container {
   width: 100%;
   max-width: 1200px;
@@ -48,7 +45,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .container { padding: 0 48px; }
 }
 
-/* ===== NAV ===== */
 #navbar {
   position: fixed;
   top: 0;
@@ -154,7 +150,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .hamburger { display: none; }
 }
 
-/* Mobile nav drawer */
 #mobile-menu {
   display: none;
   position: absolute;
@@ -192,7 +187,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   font-size: 15px;
 }
 
-/* ===== HERO ===== */
 #hero {
   min-height: 100dvh;
   display: flex;
@@ -336,7 +330,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   mix-blend-mode: lighten;
 }
 
-/* ===== SECTION SHARED ===== */
 section { padding: 96px 0; }
 
 .section-header { margin-bottom: 64px; }
@@ -355,7 +348,6 @@ section { padding: 96px 0; }
   border-radius: 2px;
 }
 
-/* ===== SERVICES ===== */
 #services { padding: 96px 0; }
 
 .services-grid {
@@ -435,7 +427,6 @@ section { padding: 96px 0; }
   color: var(--muted);
 }
 
-/* ===== ABOUT ===== */
 #about {
   background: rgba(18,18,18,0.3);
   border-top: 1px solid var(--border-subtle);
@@ -559,7 +550,6 @@ section { padding: 96px 0; }
   font-weight: 600;
 }
 
-/* ===== SKILLS ===== */
 #skills { padding: 96px 0; }
 
 .skills-header {
@@ -631,7 +621,6 @@ section { padding: 96px 0; }
 }
 .skill-tag:hover { background: rgba(255,255,255,0.09); border-color: #2a2a2a; }
 
-/* ===== PROJECTS ===== */
 #projects {
   background: rgba(18,18,18,0.3);
   border-top: 1px solid var(--border-subtle);
@@ -678,24 +667,18 @@ section { padding: 96px 0; }
   opacity: 0.06;
   background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.8) 1px, transparent 0);
   background-size: 24px 24px;
-}
-
-.project-icon-wrap {
-  width: 60px;
-  height: 60px;
-  border-radius: 16px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
   z-index: 1;
-  transition: transform 0.4s, rotate 0.4s;
 }
-.project-card:hover .project-icon-wrap { transform: scale(1.1) rotate(3deg); }
 
-.project-icon-wrap svg { width: 22px; height: 22px; color: var(--muted); }
+.project-banner {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+  z-index: 0;
+  transition: transform 0.4s;
+}
+.project-card:hover .project-banner { transform: scale(1.06); }
 
 .project-thumb.blue { background: linear-gradient(135deg, rgba(37,99,235,0.12), transparent); }
 .project-thumb.purple { background: linear-gradient(135deg, rgba(124,58,237,0.12), transparent); }
@@ -745,7 +728,6 @@ section { padding: 96px 0; }
 .project-link svg { width: 14px; height: 14px; transition: transform 0.2s; }
 .project-link:hover svg { transform: translateX(3px); }
 
-/* ===== FOOTER ===== */
 footer {
   padding: 56px 0;
   text-align: center;
@@ -799,7 +781,6 @@ footer {
   margin-top: 16px;
 }
 
-/* ===== SCROLL ANIMATIONS ===== */
 .fade-up {
   opacity: 0;
   transform: translateY(28px);
@@ -817,7 +798,6 @@ footer {
 .fade-up-d3 { transition-delay: 0.3s; }
 .fade-up-d4 { transition-delay: 0.4s; }
 
-/* Hero: animate on load */
 .hero-animate {
   opacity: 0;
   transform: translateY(24px);
